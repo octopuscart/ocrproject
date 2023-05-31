@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCR Results</title>
+</head>
+<body>
+    <h1 style="align:center">OCR Reader</h1>
+    <div style="width:50%;float:left;">
+      <p><strong>Processed Image:</strong></p>
+      <img src="data:image/jpeg;base64,{{ image }}" style="width:100%"/>
+
+    </div>
+    <div style="width:50%;float:right;">
+      <p>{{image_to_string_np}}</p>
+      <p><strong>Extracted Data:</strong></p>
+      <p>{{ data }}</p>
+
+    </div>
+</body>
+</html>
