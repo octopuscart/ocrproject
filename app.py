@@ -22,7 +22,7 @@ app = Flask(__name__)
 def upload_file():
     if request.method == "POST":
        # getting input with base64_string = base64data in HTML form
-       # this is code from nayra
+       # this is code 
         base64_string = request.form.get("base64data")
         
         # decode base64 string to PIL Image object
