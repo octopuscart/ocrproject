@@ -75,7 +75,7 @@ def decode_base64(base64_string):
 def convert_to_numpy(image):
     return np.array(image)
 
-
+# hey!
 def convert_to_grayscale(img_array):
     gray = cv2.cvtColor(img_array, cv2.COLOR_BGR2GRAY)
     return gray
