@@ -1,5 +1,6 @@
-from flask import Flask, request, jsonify, render_template, send_file
+from flask import Flask, request, jsonify, render_template, send_file, redirect, url_for
 from flask_restful import Resource, Api, reqparse
+import mysql.connector
 import re
 import cv2 
 import numpy as np
@@ -14,6 +15,7 @@ from num2words import num2words
 import json
 import base64
 from io import BytesIO
+from datetime import date
 
 
 app = Flask(__name__)
@@ -221,36 +223,40 @@ def perform_text_detection(thresh, img_array):
     # Return the processed image
     return img_copy
 
-
+# extracting invoice number
 def extract_invoice_number(extracted_text):
-    # Using preceding label to extract invoice number
-    labels = ['Invoice Number:', 'Invoice No.', 'Invoice:', 'Inv. No.', 'Number :']
-    for label in labels:
-        index = extracted_text.find(label)
-        if index != -1:
-            invoice_number = extracted_text[index+len(label):].split()[0]
-    return invoice_number
+    invoice_number_patterns = [
+        r'Invoice Number\s*\n\s*\n(.+?)\s*\n',
+        r'Invoice No\. : (\d+)',
+        r'Invoice Number : (\d+)',
+        r'Inv No\. : (\d+)',
+        r'Inv #: (\d+)',
+        r'Bill No\. : (\d+)',
+        r'Bill #: (\d+)',
+        r'Number : (\d+)',
+        r'No\. : (\d+)',
+        r'Ref No\. : (\d+)',
+        r'Reference No\. : (\d+)',
+        r'Document No\. : (\d+)',
+        r'Order No\. : (\d+)',
+        r'Transaction ID : (\d+)',
+        r'ID : (\d+)',
+        r'Number : (.+?)\s',
+        r'Invoice No\.\s*\n(.+?)\s+',
+        r'Invoice No \: ([^\n]+)',
+        r'Invoice No\.\s*\n([^:\n]+)', 
+        r'Invoice No\.\s*\n([\w\d/-]+)', 
+        r'Invoice No\.?\s*:?\s*\n(.+?)\s'
+    
+    ]
 
+    for pattern in invoice_number_patterns:
+        match = re.search(pattern, extracted_text, re.IGNORECASE | re.MULTILINE)
+        if match and len(match.groups()) > 0:
+            return match.group(1).strip()
 
-def get_invoice_nums(all_words):
-    inv_nums = []
-    invoice_no_re = r'^[0-9a-zA-Z-:]+$'
-    for word in all_words:
-        if not re.search('\d', word['text']):
-            continue
-        if len(word['text']) < 3:
-            continue
-        result = re.findall(invoice_no_re, word['text'])
-        if result:
-            inv_nums.append({
-                'text': word['text'],
-                'x1': word['left'],
-                'y1': word['top'],
-                'x2': word['left'] + word['width'],
-                'y2': word['top'] + word['height']
-            })
+    return None
 
-    return inv_nums
 
 # extracting invoice date
 def extract_date(extracted_text):
@@ -258,15 +264,19 @@ def extract_date(extracted_text):
     date_patterns = [
          r'\d[1-2][0-9][0-9][0-9][/]\d{1,2}[/]\d{1,2}',  # YYYY/MM/DD 
          r'\d[1-2][0-9][0-9][0-9][-]\d{1,2}[-]\d{1,2}', # YYYY-MM-DD
-         r'[a-zA-Z]{3}[.-]\d[0-3][0-3][.-]\d[1-2][0-9][0-9][0-9]', # Mon-DD-YYYY or DD-Mon-YYYY
-         r'\d{1,2}-[A-Za-z]{3}-\d[1-2]',    # Mon-DD-YY or DD-Mon-YY
+         r'\d{4}-\d{2}-\d{2}',  # YYYY-MM-DD or
+         r'[a-zA-Z]{3}[-]\d[0-3][0-3][-]\d[1-2][0-9][0-9][0-9]', # Mon-DD-YYYY or DD-Mon-YYYY
+         r'[a-zA-Z]{3}[.]\d[0-3][0-3][.]\d[1-2][0-9][0-9][0-9]'
          r'[a-zA-Z]{3}\s\d{1,2}\s\d[1-4]',  # Mon D YYYY
          r'\d[0-3][0-3]\s[a-zA-Z]{3}\s\d[1-4]',   # D Mon YYYY
          r'\d[1-2][0-9][0-9][0-9][.-][a-zA-Z]{3}[.-]\d{2}',  # YYYYY-Mon-DD or YYYY-Mon-DD
          r'\d{1,2}[/-][a-zA-Z]{3}[/-]\d{2,4}',  # Mon D, Yr or D Mon, Yr
          r'\d{1,2}[/]\d{1,2}[/]\d[1-4][0-9][0-9][0-9]',  # MM/DD/YYYY or DD/MM/YYYY
-         r'\d{1,2}[-]\d{1,2}[-]\d[1-4][0-9][0-9][0-9]', # YYYY-MM-DD or YYYY-MM-DD
-         ]
+         r'\d{1,2}[-]\d{1,2}[-]\d[1-4][0-9][0-9][0-9]', # MM-DD-YYYY or DD-MM-YYYY
+         r'\d[1-4][,-]\s?[a-zA-Z]{3}[,-]\s?\d{1,2}',  # Yr, Month D or YYYY, Mon DD
+         r'\d{1,2}[/]\d{1,2}[/]\d{2,4}',  # MM/DD/YY or DD/MM/YY or YY/MM/DD
+         r'\d{1,2}[-]\d{1,2}[-]\d{2,4}'  # MM/DD/YY or DD/MM/YY or YY/MM/DD
+    ]
     
     extracted_date = None
     
@@ -308,18 +318,26 @@ def extract_gst_number(extracted_text):
      
     
 def extract_max_amount(extracted_text):
-    amount_pattern = r"[\d,]+\.\d{2}"
-    total_amounts = re.findall(amount_pattern, extracted_text)
-    thisamount = 0
-    
-    for amount in total_amounts:
-        new_string = amount.replace(",", "")
-        float_amount = float(new_string)
-        
-        if float_amount > thisamount:
-            thisamount = float_amount
-    
-    return thisamount
+    amount_patterns = [
+        r'Total Fare ([\d,.]+)',
+        r'\*Total Fare \(All Passenger\): ([\d,.]+)',
+        r'Total Amount: ([\d,.]+)',
+        r'Amount Due: ([\d,.]+)',
+        r'Grand Total: ([\d,.]+)',
+        r"[\d,]+\.\d{2}"
+        # Add more patterns as needed
+    ]
+    max_amount = 0
+
+    for pattern in amount_patterns:
+        matches = re.findall(pattern, extracted_text)
+        for match in matches:
+            clean_amount = float(match.replace(',', ''))
+            if clean_amount > max_amount:
+                max_amount = clean_amount
+
+    return max_amount
+
 
 def extract_cgst_amount(extracted_text):
     # Approach 1: Extract CGST amount using alternative pattern
