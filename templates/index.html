@@ -1,170 +1,158 @@
 <!DOCTYPE html>
-
-
 <html>
-  <head>
-    <title>Base64 Image Upload</title>
+<head>
+    <title>OCR Upload</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
-      }
-      
-      body {
-        background: #FCE3BA;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-      }
-      
-      form {
-        overflow: hidden;
-        width: 450px;
-        position: relative;
-       
-        align-items: center;
-        border-radius: 7px;
-        box-shadow: 0 0 30px -10px;
-        background: #fff;
-      }
-      
-      form button {
-        background: #F89267;
-      
-        border: none;
-        padding: 10px;
-        width: 100%;
-        color: #fff;
-        height: 100%;
-        font-size: 25px;
-        right: 0;
-        border-radius: 7px;
-        scale: .83;
-        transition: scale .3s ease;
-      }
-      
-      form textarea {
-        width: 100%;
-        padding: 20px;
-        font-size: 25px;
-        outline: none;
-        border: none;
-      }
-      
-      .progressbar {
-        position: absolute;
-        width: 100%;
-        bottom: -5px;
-        height: 5px;
-        background: #ddd;
-        transition: bottom .2s ease;
-      }
-      
-      .progressbar .bar {
-        width: 0%;
-        height: 100%;
-        background: #f86767;
-      }
-      
-      .submitted {
-        width: 100%;
-        height: 100%;
-        background: #111;
-        top: 100%;
-        left: 0;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        color: #eee;
-        transition: top .3s ease;
-      }
-      
-      @keyframes push {
-        0%, 100% {
-          scale: 1;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins',sans-serif;
         }
         
-        50% {
-          scale: .95;
-        }
-      }
-      
-      @keyframes scaleWidth {
-        0% {
-          width: 25%;
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
         
-        100% {
-          width: 100%;
-        }
-      }
-      
-      @keyframes scaleBar {
-        0% {
-          width: 0%;
+        form {
+            overflow: hidden;
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            max-width: 400px;
+            padding: 2rem;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(55px);
+            margin-top: 100px;
         }
         
-        100% {
-          width: 100%;
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 1rem;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border: 2px solid black;
+            color: black;
+            font-size: 1rem;
+            resize: none;
         }
-      }
-    </style>
-  </head>
-  <body>
+        
+        button {
+            width: 200px;
+            height: 40px;
+            border-radius: 40px;
+            background-color: lightblue;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            scale: .83;
+            transition: scale .3s ease;
+        }
+        
+        .progressbar {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: bottom .2s ease;
+        }
+        
+        .progressbar .bar {
+            height: 100%;
+            background-color: blue;
+            animation: ease .7s scaleBar;
+        }
+        
+        .submitted {
+            position: absolute;
+            top: -50px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+	        justify-content: center;
+            transition: top .3s ease;
+        }
 
-    <form class="input" action="/upload/ocr" method="post" id="myForm">  
-      <textarea type="text" name="base64data" placeholder="Enter Base64 Data" required></textarea>
-      <button>Submit</button>
-      
-      <div class="progressbar">
-        <div class="bar"></div>
-      </div>
-      
-      <div class="submitted">Submitted!</div>
+        @keyframes push {
+            0%, 100% {scale: 1;}
+            50% {scale: .95;}
+        }
+        
+        @keyframes scaleWidth {
+            0% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+        
+        @keyframes scaleBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <form class="input" action="/upload/ocr" method="post" id="myForm">
+        <textarea type="text" name="base64data" placeholder="Enter Base64 Data" required></textarea>
+        <button type="submit">Submit</button>
+
+        <div class="progressbar">
+            <div class="bar"></div>
+        </div>
+
+        <div class="submitted">Submitted!</div>
     </form>
 
+    <script>
+          const form = document.querySelector('myForm')
+          const submitBtn = document.querySelector('button')
+          const progressbar = document.querySelector('.progressbar')
+          const bar = document.querySelector('.progressbar .bar')
+          const submitted = document.querySelector('.submitted')
 
-  </body>
-  </body>
+          form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            form.style.animation = 'linear .3s push';
+
+            setTimeout(() => {
+                submitBtn.style.scale = '1'
+            }, 300)
+
+            setTimeout(() => {
+                submitBtn.style.animation = 'ease .5s scaleWidth'
+            }, 900)
+
+            setTimeout(() => {
+                progressbar.style.bottom = '0px'
+            }, 1200)
+
+            setTimeout(() => {
+                submitBtn.style.width = '100%'
+                bar.style.animation = 'ease .7s scaleBar'
+            }, 1390)
+
+            setTimeout(() => {
+                bar.style.width = '100%'
+                submitted.style.top = '0'
+            }, 2090)
+        })
+  </script>
+
+</body>
 </html>
-<script>
-  const form = document.querySelector('form')
-const submitBtn = document.querySelector('form button')
-const progressbar = document.querySelector('.progressbar')
-const bar = document.querySelector('.progressbar .bar')
-const submitted = document.querySelector('.submitted')
-
-form.addEventListener('submit', e => {
-	e.preventDefault()
-	
-	form.style.animation = 'linear .3s push'
-	
-	setTimeout(() => {
-		submitBtn.style.scale = '1'
-	}, 300)
-	
-	setTimeout(() => {
-		submitBtn.style.animation = 'ease .5s scaleWidth'
-	}, 900)
-	
-	setTimeout(() => {
-		progressbar.style.bottom = '0px'
-	}, 1200)
-	
-	setTimeout(() => {
-		submitBtn.style.width = '100%'
-		bar.style.animation = 'ease .7s scaleBar'
-	}, 1390)
-	
-	setTimeout(() => {
-		bar.style.width = '100%'
-		submitted.style.top = '0'
-    document.getElementById("myForm").submit();
-	}, 2090)
-})
-</script>

@@ -215,10 +215,20 @@ def perform_text_detection(thresh, img_array):
         (x, y, w, h) = date_label_bbox
         cv2.rectangle(img_copy, (x, y), (x + w, y + h), (255, 0, 0), 2)  # Blue color for date label
     
-   # Highlight the bounding box of the "Total" or "Grand Total" label positioned next to or above the maximum amount
+  # Find the closest Total label above or before the max_amount
+    closest_label = None
+    closest_bbox = None
     for i in range(len(total_label_bboxes)):
         (x, y, w, h) = total_label_bboxes[i]
-        cv2.rectangle(img_copy, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Greean color for Total or Grand Total label
+        if y < max_amount_bbox[1] or (y == max_amount_bbox[1] and x < max_amount_bbox[0]):
+            if closest_bbox is None or y > closest_bbox[1] or (y == closest_bbox[1] and x > closest_bbox[0]):
+                closest_label = total_labels[i]
+                closest_bbox = (x, y, w, h)
+
+    # Highlight the closest Total label above or before the max_amount
+    if closest_bbox:
+        (x, y, w, h) = closest_bbox
+        cv2.rectangle(img_copy, (x, y), (x + w, y + h), (0, 255, 0), 2)  # Green color for closest label
 
     # Return the processed image
     return img_copy
