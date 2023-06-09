@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /home/varbin/ocr.varbin.com/cgiapp.cgi/$1 [L]

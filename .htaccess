@@ -1,0 +1,7 @@
+
+
+#     WSGIDaemonProcess varbin user=apache group=apache threads=2
+
+#     WSGIScriptAlias / /home/varbin/ocr.varbin.com/wsgi.py
+
+
