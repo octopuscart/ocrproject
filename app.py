@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, send_file, redirect, url_for
 from flask_restful import Resource, Api, reqparse
-import mysql.connector
+#import mysql.connector
 import re
 import cv2 
 import numpy as np
