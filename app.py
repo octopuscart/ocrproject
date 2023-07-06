@@ -47,7 +47,7 @@ def upload_file():
     
     # if the request method is GET, return the upload form
     return render_template("index.html")
-    
+
 @app.after_request
 def add_cors_headers(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
@@ -77,8 +77,10 @@ def ocrapi():
         
         # render the HTML template with the extracted data and the processed image
         responseData = data
+    
+    response= jsonify(responseData)
     response.headers.add("Access-Control-Allow-Origin", "*")
-    return jsonify(responseData)
+    return response
 
 def process_image(image):
     # convert PIL Image object to NumPy array
