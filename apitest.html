@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OCR Upload</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        form {
+            overflow: hidden;
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            max-width: 400px;
+            padding: 2rem;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(55px);
+            margin-top: 100px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 1rem;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border: 2px solid black;
+            color: black;
+            font-size: 1rem;
+            resize: none;
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            border-radius: 40px;
+            background-color: lightblue;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            scale: .83;
+            transition: scale .3s ease;
+        }
+
+        .progressbar {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            height: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: bottom .2s ease;
+        }
+
+        .progressbar .bar {
+            height: 100%;
+            background-color: blue;
+            animation: ease .7s scaleBar;
+        }
+
+        .submitted {
+            position: absolute;
+            top: -50px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: top .3s ease;
+        }
+
+        @keyframes push {
+
+            0%,
+            100% {
+                scale: 1;
+            }
+
+            50% {
+                scale: .95;
+            }
+        }
+
+        @keyframes scaleWidth {
+            0% {
+                transform: scaleX(1);
+            }
+
+            100% {
+                transform: scaleX(0);
+            }
+        }
+
+        @keyframes scaleBar {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <textarea type="text" id="inputData" name="base64data" placeholder="Enter Base64 Data" required></textarea>
+        <button type="submit" onclick="callOcr()">Submit</button>
+
+        <div class="progressbar">
+            <div class="bar"></div>
+        </div>
+
+        <div class="submitted">Submitted!</div>
+    </div>
+    <div class="output" id="output">
+
+    </div>
+
+
+    <script>
+
+        function callOcr() {
+            var formAction = new FormData();
+            formAction.append("base64data", $("#inputData").val());
+
+            var settings = {
+                "url": "http://ocr.varbin.com:8000/ocrapi",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": formAction
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                $("#output").html(response)
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

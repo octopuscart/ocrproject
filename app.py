@@ -47,7 +47,13 @@ def upload_file():
     
     # if the request method is GET, return the upload form
     return render_template("index.html")
-
+    
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 @app.route('/ocrapi', methods=['POST', 'GET'])
 def ocrapi():
@@ -71,7 +77,7 @@ def ocrapi():
         
         # render the HTML template with the extracted data and the processed image
         responseData = data
-
+    response.headers.add("Access-Control-Allow-Origin", "*")
     return jsonify(responseData)
 
 def process_image(image):
