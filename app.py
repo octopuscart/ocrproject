@@ -51,7 +51,7 @@ def upload_file():
 
 @app.route('/ocrapi', methods=['POST', 'GET'])
 def ocrapi():
-    responseData = {"data":{}, "image":""}
+    responseData = {}
     if request.method == "POST":
         # getting input with base64_string = base64data in HTML form
         base64_string = request.form.get("base64data")
@@ -70,8 +70,7 @@ def ocrapi():
                 return "Error: Invalid base64 string"
         
         # render the HTML template with the extracted data and the processed image
-        responseData["data"] = data
-        responseData["image"] = encoded_image
+        responseData = data
 
     return jsonify(responseData)
 
