@@ -470,7 +470,12 @@ def extract_date(extracted_text):
                                             year = date_obj.strftime('%Y')
                                             extracted_date = date_obj.strftime('%d/%m/') + year
                                         except ValueError:
-                                            pass  # Handle other date formats here
+                                            try:
+                                                date_obj = datetime.strptime(extracted_date, '%d/%m/%y')
+                                                year = date_obj.strftime('%Y')
+                                                extracted_date = date_obj.strftime('%d/%m/') + year
+                                            except ValueError:
+                                                pass  # Handle other date formats here
 
     return extracted_date
  
