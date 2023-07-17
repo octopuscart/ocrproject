@@ -330,35 +330,36 @@ def extract_invoice_number(invoice_text):
 def extract_date(extracted_text):
     # Regular expressions for different date formats
     date_patterns = [
-        r'\d{1,2}\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d{2,4}',  # DD Mon YY or DD Mon YYYY
-        r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{1,2}\s\d[1-4]',  # Mon D YYYY
-        r'\d[0-3][0-3]\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d[1-4]',  # D Mon YYYY
-        r'\d{1,2}\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}',  # DD MON YYYY
-        r'\d{1,2}[/-](?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[/-]\d{2,4}',  # Mon D, Yr or D Mon, Yr
-        r'\d{1,2}\s(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s\d{4}',  # DD Month YYYY
-        r'\d{1,2}[/]\d{1,2}[/]\d{2,4}',  # MM/DD/YY or DD/MM/YY or YY/MM/DD
-        r'\d{1,2}[-]\d{1,2}[-]\d{2,4}',  # MM-DD-YY or DD-MM-YY or YY-MM-DD      
-        r'\d[1-2][0-9][0-9][0-9][/]\d{1,2}[/]\d{1,2}',  # YYYY/MM/DD 
-        r'\d[1-2][0-9][0-9][0-9][-]\d{1,2}[-]\d{1,2}', # YYYY-MM-DD
-        r'\d{4}-\d{2}-\d{2}',  # YYYY-MM-DD 
-        r'\d{1,2}[/]\d{1,2}[/]\d[1-4][0-9][0-9][0-9]',  # MM/DD/YYYY or DD/MM/YYYY
-        r'\d{1,2}[-]\d{1,2}[-]\d[1-4][0-9][0-9][0-9]', # YYYY-MM-DD or YYYY-MM-DD
-        r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[-]\d[0-3][0-3][-]\d[1-2][0-9][0-9][0-9]', # Mon-DD-YYYY or DD-Mon-YYYY
-        r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[.]\d[0-3][0-3][.]\d[1-2][0-9][0-9][0-9]', # Mon.DD.YYYY or DD.Mon.YYYY
-        r'\d{1,2}-(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)-\d[1-2]',    # Mon-DD-YY or DD-Mon-YY
-        r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d{1,2}\s\d[1-4]',  # Mon D YYYY
-        r'\d[0-3][0-3]\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d[1-4]',   # D Mon YYYY
-        r'\d[1-2][0-9][0-9][0-9][.-](?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[.-]\d{2}',  # YYYYY-Mon-DD or YYYY-Mon-DD
-        r'\d{1,2}[/-](?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[/-]\d{2,4}',  # Mon D, Yr or D Mon, Yr
-        r'\d[1-4][,-]\s?(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[,-]\s?\d{1,2}',  # Yr, Month D or YYYY, Mon DD
-        r'\d{1,2}\s-\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s-\s\d{4}',  # DD - Mon - YYYY
-        r'\d{1,2}\s/\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s/\s\d{4}',  # DD / Mon / YYYY
-        r'\d{1,2}\s-\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s-\s\d{4}',  # DD - Mon - YYYY
-        r'\d{1,2}\s/\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s/\s\d{4}',  # DD / Mon / YYYY
-        r'\d{1,2}[.]\d{1,2}[.]\d{4}'  # DD.MM.YYYY
-    ]
+         r'\d{1,2}\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d{2,4}',  # DD Mon YY or DD Mon YYYY
+         r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{1,2}\s\d[1-4]', # Mon D YYYY
+         r'\d[0-3][0-3]\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d[1-4]', # D Mon YYYY
+         r'\d{1,2}\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}',  # DD MON YYYY
+         r'\d{1,2}[/-](?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[/-]\d{2,4}',  # Mon D, Yr or D Mon, Yr
+         r'\d{1,2}\s(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s\d{4}',   # DD Month YYYY
+         r'\d{1,2}[/]\d{1,2}[/]\d{2,4}',  # MM/DD/YY or DD/MM/YY or YY/MM/DD
+         r'\d{1,2}[-]\d{1,2}[-]\d{2,4}',  # MM-DD-YY or DD-MM-YY or YY-MM-DD      
+         r'\d[1-2][0-9][0-9][0-9][/]\d{1,2}[/]\d{1,2}',  # YYYY/MM/DD 
+         r'\d[1-2][0-9][0-9][0-9][-]\d{1,2}[-]\d{1,2}', # YYYY-MM-DD
+         r'\d{4}-\d{2}-\d{2}',  # YYYY-MM-DD 
+         r'\d{1,2}[/]\d{1,2}[/]\d[1-4][0-9][0-9][0-9]',  # MM/DD/YYYY or DD/MM/YYYY
+         r'\d{1,2}[-]\d{1,2}[-]\d[1-4][0-9][0-9][0-9]', # YYYY-MM-DD or YYYY-MM-DD
+         r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[-]\d[0-3][0-3][-]\d[1-2][0-9][0-9][0-9]', # Mon-DD-YYYY or DD-Mon-YYYY
+         r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[.]\d[0-3][0-3][.]\d[1-2][0-9][0-9][0-9]', # Mon.DD.YYYY or DD.Mon.YYYY
+         r'\d{1,2}-(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)-\d[1-2]',    # Mon-DD-YY or DD-Mon-YY
+         r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d{1,2}\s\d[1-4]',  # Mon D YYYY
+         r'\d[0-3][0-3]\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d[1-4]',   # D Mon YYYY
+         r'\d[1-2][0-9][0-9][0-9][.-](?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[.-]\d{2}',  # YYYYY-Mon-DD or YYYY-Mon-DD
+         r'\d{1,2}[/-](?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[/-]\d{2,4}',  # Mon D, Yr or D Mon, Yr
+         r'\d[1-4][,-]\s?(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[,-]\s?\d{1,2}'  # Yr, Month D or YYYY, Mon DD
+         r'\d{1,2}\s-\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s-\s\d{4}',  # DD - Mon - YYYY
+         r'\d{1,2}\s/\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s/\s\d{4}',  # DD / Mon / YYYY
+         r'\d{1,2}\s-\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s-\s\d{4}',  # DD - Mon - YYYY
+         r'\d{1,2}\s/\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s/\s\d{4}',  # DD / Mon / YYYY
+         r'\d{1,2}[.]\d{1,2}[.]\d{4}'  # DD.MM.YYYY
+         r'\d{1,2}[.]\d{1,2}[.]\d{2,4}'  # DD.MM.YY
+         ]
     
-      # Define the labels and their corresponding preceding patterns
+    # Define the labels and their corresponding preceding patterns
     preceding_labels = {
         'Date': [
             'Date :',
@@ -402,7 +403,6 @@ def extract_date(extracted_text):
         ]
     }
 
-    
     extracted_date = None
 
     # First attempt using date_patterns
@@ -423,7 +423,7 @@ def extract_date(extracted_text):
                 extracted_date = match.group(1)
                 break
 
-   # Convert date format to "dd/mm/yyyy"
+    # Convert date format to "dd/mm/yyyy"
     if extracted_date:
         try:
             date_obj = datetime.strptime(extracted_date, '%d-%m-%y')
@@ -460,7 +460,17 @@ def extract_date(extracted_text):
                                     year = date_obj.strftime('%Y')
                                     extracted_date = date_obj.strftime('%d/%m/') + year
                                 except ValueError:
-                                    pass  # Handle other date formats here
+                                    try:
+                                        date_obj = datetime.strptime(extracted_date, '%d.%m.%Y')
+                                        year = date_obj.strftime('%Y')
+                                        extracted_date = date_obj.strftime('%d/%m/') + year
+                                    except ValueError:
+                                        try:
+                                            date_obj = datetime.strptime(extracted_date, '%d %B %Y')
+                                            year = date_obj.strftime('%Y')
+                                            extracted_date = date_obj.strftime('%d/%m/') + year
+                                        except ValueError:
+                                            pass  # Handle other date formats here
 
     return extracted_date
  
