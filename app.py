@@ -23,6 +23,32 @@ from collections import OrderedDict
 
 app = Flask(__name__)
 
+@app.route('/ocrapi', methods=['POST', 'GET'])
+def ocrapi():
+    responseData = {}
+    if request.method == "POST":
+        # getting input with base64_string = base64data in HTML form
+        base64_string = request.form.get("base64data")
+
+        # decode base64 string to PIL Image object or PDF bytes
+        if base64_string.startswith('data:image'):
+            image = decode_base64(base64_string)
+            data, encoded_image = process_image(image)
+        else:
+            try:
+                # Attempt to decode the base64 string as PDF bytes
+                pdf_bytes = base64.b64decode(base64_string)
+                data = process_pdf(base64_string)
+                encoded_image = None
+            except:
+                return "Error: Invalid base64 string"
+        
+        # render the HTML template with the extracted data and the processed image
+        responseData = data
+    
+    response= jsonify(responseData)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @app.route('/upload/ocr', methods=['POST', 'GET'])
 def upload_file():
