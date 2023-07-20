@@ -2,17 +2,1664 @@
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
-Usage: flask run [OPTIONS]
-Try 'flask run --help' for help.
-
-Error: While importing 'wsgi', an ImportError was raised:
-
+ * Running on http://ocr.varbin.com:8000/ (Press CTRL+C to quit)
+[ERROR:0@38.058] global parallel_impl.cpp:244 WorkerThread 3: Can't spawn new thread: res = 11
+[ERROR:0@38.058] global parallel_impl.cpp:244 WorkerThread 4: Can't spawn new thread: res = 11
+27.5.47.112 - - [06/Jul/2023 09:23:45] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 09:45:11] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 09:45:16] "POST /ocrapi HTTP/1.1" 200 -
+[2023-07-06 10:04:02,471] ERROR in app: Exception on /ocrapi [POST]
 Traceback (most recent call last):
-  File "/home/varbin/.local/lib/python3.6/site-packages/flask/cli.py", line 260, in locate_app
-    __import__(module_name)
-  File "/home/varbin/ocr.varbin.com/wsgi.py", line 10, in <module>
-    from app import app as application
-  File "/home/varbin/ocr.varbin.com/app.py", line 3, in <module>
-    import mysql.connector
-ModuleNotFoundError: No module named 'mysql'
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:04:02] "POST /ocrapi HTTP/1.1" 500 -
 
+                                 Revised Invoice 
+
+  JYOTI  GST TALLY   PRACTICE   PRIVATE  LIMITED | Credit Note No.         Dated 
+  B-240                                            1                       1-Jul-2017 
+  RAMESH   NAGAR                                                           Mode/Terms of Payment 
+  GSTIN/UIN: O7APACG8976H1Z8 
+  E-Mail : accounts@gstp.com                       Buyer's Ref.            Other Reference(s) 
+                                                   GTI-01  dt. 1-Jul-2017 
+  Party :                                          Buyer's Order No.       Dated 
+  Ghai Store 
+  R-786 New  Rajinder Nagar, New Delhi-110060      Despatch Document No. 
+  State Name      : Delhi, Code : 07 
+  GSTIN/UIN       : O7BBUPK8789J1Z8                Despatched through      Destination 
+                                                   Terms of Delivery 
+  Sl               Description of Goods              HSN/SAC)  Quantity   Rate   per    Amount 
+  No 
+  1 | Spices                                         09042211     2 Kg}  1,200.00} Kg     2,400.00 
+                                   Output CGST@9%                              91%         216.00 
+                                   Output SGST@9%                              91%         216.00 
+                                               Total              2Kg                 % 2,832.00 
+  Amount Chargeable (in words)                                                             £.60.£ 
+  INR Two  Thousand   Eight Hundred Thirty Two Only 
+               HSN/SAC                  Taxable       Central Tax        State Tax        Total 
+                                         Value     Rate    Amount     Rate    Amount | Tax Amount 
+  09042211                                2,400.00    9%      216.00    9%      216.00      432.00 
+                                 Total    2,400.00            216.00            216.00      432.00 
+
+   Tax Amount (in words) : 
+
+                   INR Four Hundred Thirty Two Only 
+
+                                                            for JYOTI GST TALLY PRACTICE PRIVATE LIMITED 
+
+                                                                                                             Authorised Signatory 
+
+                                 This is a Computer Generated Document 
+
+Invoice Number not found in text.
+Extracted date: 1-Jul-2017
+Extracted GST Numbers: ['O7BBUPK8789J1Z8', 'O7APACG8976H1Z8']
+Extracted maximum amount: 2832.0
+Extracted CGST amount: 216.0
+Extracted SGST amount: 216.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 9
+Extracted CGST Percentage: 9
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50152.58.33.141 - - [06/Jul/2023 10:06:34] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 10:06:36] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 10:13:17] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 10:13:19] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 10:14:12] "POST /ocrapi HTTP/1.1" 200 -
+[2023-07-06 10:21:39,392] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:21:39] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:21:42,230] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:21:42] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:21:47,557] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:21:47] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:21:50,042] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:21:50] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:21:56,404] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:21:56] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:23:15,697] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:23:15] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:24:48,675] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:24:48] "POST /ocrapi HTTP/1.1" 500 -
+[2023-07-06 10:25:16,658] ERROR in app: Exception on /ocrapi [POST]
+Traceback (most recent call last):
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/varbin/.local/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/varbin/ocr.varbin.com/app.py", line 61, in ocrapi
+    if base64_string.startswith('data:image'):
+AttributeError: 'NoneType' object has no attribute 'startswith'
+152.58.33.141 - - [06/Jul/2023 10:25:16] "POST /ocrapi HTTP/1.1" 500 -
+
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+                                 Revised Invoice 
+
+  JYOTI  GST TALLY   PRACTICE   PRIVATE  LIMITED | Credit Note No.         Dated 
+  B-240                                            1                       1-Jul-2017 
+  RAMESH   NAGAR                                                           Mode/Terms of Payment 
+  GSTIN/UIN: O7APACG8976H1Z8 
+  E-Mail : accounts@gstp.com                       Buyer's Ref.            Other Reference(s) 
+                                                   GTI-01  dt. 1-Jul-2017 
+  Party :                                          Buyer's Order No.       Dated 
+  Ghai Store 
+  R-786 New  Rajinder Nagar, New Delhi-110060      Despatch Document No. 
+  State Name      : Delhi, Code : 07 
+  GSTIN/UIN       : O7BBUPK8789J1Z8                Despatched through      Destination 
+                                                   Terms of Delivery 
+  Sl               Description of Goods              HSN/SAC)  Quantity   Rate   per    Amount 
+  No 
+  1 | Spices                                         09042211     2 Kg}  1,200.00} Kg     2,400.00 
+                                   Output CGST@9%                              91%         216.00 
+                                   Output SGST@9%                              91%         216.00 
+                                               Total              2Kg                 % 2,832.00 
+  Amount Chargeable (in words)                                                             £.60.£ 
+  INR Two  Thousand   Eight Hundred Thirty Two Only 
+               HSN/SAC                  Taxable       Central Tax        State Tax        Total 
+                                         Value     Rate    Amount     Rate    Amount | Tax Amount 
+  09042211                                2,400.00    9%      216.00    9%      216.00      432.00 
+                                 Total    2,400.00            216.00            216.00      432.00 
+
+   Tax Amount (in words) : 
+
+                   INR Four Hundred Thirty Two Only 
+
+                                                            for JYOTI GST TALLY PRACTICE PRIVATE LIMITED 
+
+                                                                                                             Authorised Signatory 
+
+                                 This is a Computer Generated Document 
+110.226.6.119 - - [06/Jul/2023 10:35:34] "POST /ocrapi HTTP/1.1" 200 -
+110.226.6.119 - - [06/Jul/2023 10:35:34] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 10:42:35] "POST /ocrapi HTTP/1.1" 200 -
+152.58.33.141 - - [06/Jul/2023 10:43:29] "POST /ocrapi HTTP/1.1" 200 -
+
+Invoice Number not found in text.
+Extracted date: 1-Jul-2017
+Extracted GST Numbers: ['O7BBUPK8789J1Z8', 'O7APACG8976H1Z8']
+Extracted maximum amount: 2832.0
+Extracted CGST amount: 216.0
+Extracted SGST amount: 216.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 9
+Extracted CGST Percentage: 9
+
+                                 Revised Invoice 
+
+  JYOTI  GST TALLY   PRACTICE   PRIVATE  LIMITED | Credit Note No.         Dated 
+  B-240                                            1                       1-Jul-2017 
+  RAMESH   NAGAR                                                           Mode/Terms of Payment 
+  GSTIN/UIN: O7APACG8976H1Z8 
+  E-Mail : accounts@gstp.com                       Buyer's Ref.            Other Reference(s) 
+                                                   GTI-01  dt. 1-Jul-2017 
+  Party :                                          Buyer's Order No.       Dated 
+  Ghai Store 
+  R-786 New  Rajinder Nagar, New Delhi-110060      Despatch Document No. 
+  State Name      : Delhi, Code : 07 
+  GSTIN/UIN       : O7BBUPK8789J1Z8                Despatched through      Destination 
+                                                   Terms of Delivery 
+  Sl               Description of Goods              HSN/SAC)  Quantity   Rate   per    Amount 
+  No 
+  1 | Spices                                         09042211     2 Kg}  1,200.00} Kg     2,400.00 
+                                   Output CGST@9%                              91%         216.00 
+                                   Output SGST@9%                              91%         216.00 
+                                               Total              2Kg                 % 2,832.00 
+  Amount Chargeable (in words)                                                             £.60.£ 
+  INR Two  Thousand   Eight Hundred Thirty Two Only 
+               HSN/SAC                  Taxable       Central Tax        State Tax        Total 
+                                         Value     Rate    Amount     Rate    Amount | Tax Amount 
+  09042211                                2,400.00    9%      216.00    9%      216.00      432.00 
+                                 Total    2,400.00            216.00            216.00      432.00 
+
+   Tax Amount (in words) : 
+
+                   INR Four Hundred Thirty Two Only 
+
+                                                            for JYOTI GST TALLY PRACTICE PRIVATE LIMITED 
+
+                                                                                                             Authorised Signatory 
+
+                                 This is a Computer Generated Document 
+
+Invoice Number not found in text.
+Extracted date: 1-Jul-2017
+Extracted GST Numbers: ['O7BBUPK8789J1Z8', 'O7APACG8976H1Z8']
+Extracted maximum amount: 2832.0
+Extracted CGST amount: 216.0
+Extracted SGST amount: 216.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 9
+Extracted CGST Percentage: 9
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+         TAX INVOTCE 
+      D  PALACE FINE DINE 
+
+ PATIL PALACE,  SR, NO.  2,NDA-PASHAN  ROAD, 
+
+         BAVDHAN KHURD PUNE~411021 
+         PH-7719816611/02022951528 
+           VATIN No- 27660397285v 
+           GSTIN No- 27ACCPY9O590121 
+
+ BillNo ; 73    Date ; 27-04-2022  10:12 PM 
+ Table : 126   Covers  ; 1  Waiter ; Suni] 
+
+ *Food* 
+Item                      Qty  Rate 
+ Chicken Surai  Kebab       (Omeas0 0 
+ Chicken Sultani  Kebab     0   350.0 
+ Eggs Boiled  2 Pes       1.0    80.0 
+ Paneer Chilli             .0   310.0 
+  Fresh Lime Soda         2.0    80.0 
+  Masala Papad            670    edo 
+  Murgh Makhanwala Full     0   660.0 
+  Butter Roti             8.0    50.0 
+ Roti                     4.0    45.0 
+  Sigdi Veg               1nCia20.0 
+                           SubTotal  + 
+                       SGST  2.50%   : 
+                       CGST  2.50%   : 
+                              Total  : 
+  *Liquor* 
+  Item                    Qty  Rate 
+  Ip] Offer Kf Tower      1.0   849.0 
+  Red Bull                 1.0   220.0 
+  Ip] Offer Kf Pitcher     1.0   449.0 
+                           SubTotal  : 
+            fmt     cy         Total : 
+
+                                        Amount 
+
+                                      3160.00 
+                                         79.00 
+                                         79,00 
+                                       3318.00 
+
+                                        1518.00 
+                                        1518.00 
+
+ Grand  Total  CRS) : 4636 
+
+Extracted Invoice Number: 73
+Extracted date: 27-04-2022
+Extracted GST Numbers: ['27ACCPY9O590121']
+Extracted maximum amount: 3318.0
+Extracted CGST amount: 3160.0
+Extracted SGST amount: 3160.0
+IGST amount not found in text.
+GST Total not found in text.
+Extracted SGST Percentage: 2.50
+Extracted CGST Percentage: 2.50
+
+          Tax Invoice 
+
+                                                                       make       (24    trip 
+            Invoice Details 
+            Invoice No. : 1000000021579160                            Customer Details 
+            Invoice Date : 2018-02-21                                 Place of Supply: Haryana 
+            PAN No. : AADCM5146R                                                   . 
+            GSTIN No. : O6AADCM5146R1ZZ 
+
+               Service Category : Reservation services for air transportation. 
+               SAC  Code : 998551 
+
+               Booked by                        Booked ID                 Booked Date 
+               ATUL  ALURKAR 
+               (atul@eilisys.com)               NF22997130755952          Wed  Feb 21 15:06:18 IST 2018 
+               (9822030145) 
+               Flight Details 
+                         SPICE JET          MAA                                  PNQ 
+                         cei                Chennai                              Pune 
+                                            Sun Feb 25 23:50:00 2018             Mon Feb 26 01:20:00 2018 
+              Passengers: 
+
+            01. ATUL ALURKAR 
+
+                Fare Details 
+               Fare/Charges                Passenger 
+                Base  Fare                     3475.0 
+                Tax and  Other Charges: 
+                Passenger  Service Fee           154.0 
+                Airline GST                      176.0 
+                Seat Charge                     1000.0 
+                Other Surcharge                 246.0 
+                Total Fare                     5051.0 
+                 *Total Fare (All Passenger):                                                              INR 5051.0 
+                 Donation  Amount:                                                                             INR 5.0 
+                 Convenience   Fee  (a):                                                                    INR  228.8 
+
+                CGST  @9%  on (a):                                                                   INR 20.6 
+110.226.6.119 - - [06/Jul/2023 10:45:54] "POST /ocrapi HTTP/1.1" 200 -
+110.226.6.119 - - [06/Jul/2023 10:45:58] "POST /ocrapi HTTP/1.1" 200 -
+167.94.138.51 - - [06/Jul/2023 10:46:27] "GET / HTTP/1.1" 404 -
+167.94.138.51 - - [06/Jul/2023 10:46:27] "GET / HTTP/1.1" 404 -
+167.94.138.51 - - [06/Jul/2023 10:46:27] code 505, message Invalid HTTP version (2.0)
+167.94.138.51 - - [06/Jul/2023 10:46:27] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+152.58.33.141 - - [06/Jul/2023 10:52:32] "POST /ocrapi HTTP/1.1" 200 -
+167.94.145.59 - - [06/Jul/2023 11:02:02] "GET / HTTP/1.1" 404 -
+167.94.145.59 - - [06/Jul/2023 11:02:02] "GET / HTTP/1.1" 404 -
+167.94.145.59 - - [06/Jul/2023 11:02:02] code 505, message Invalid HTTP version (2.0)
+167.94.145.59 - - [06/Jul/2023 11:02:02] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+162.142.125.217 - - [06/Jul/2023 11:02:31] "GET / HTTP/1.1" 404 -
+162.142.125.217 - - [06/Jul/2023 11:02:31] "GET / HTTP/1.1" 404 -
+162.142.125.217 - - [06/Jul/2023 11:02:31] code 505, message Invalid HTTP version (2.0)
+162.142.125.217 - - [06/Jul/2023 11:02:31] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+148.153.56.82 - - [06/Jul/2023 12:02:17] "GET /OXCr HTTP/1.1" 404 -
+148.153.56.82 - - [06/Jul/2023 12:02:17] "GET /jHBi HTTP/1.1" 404 -
+148.153.56.82 - - [06/Jul/2023 12:02:18] "GET /aab8 HTTP/1.1" 404 -
+148.153.56.82 - - [06/Jul/2023 12:02:18] "GET /jquery-3.3.1.slim.min.js HTTP/1.1" 404 -
+148.153.56.82 - - [06/Jul/2023 12:02:18] "GET /aab9 HTTP/1.1" 404 -
+148.153.56.82 - - [06/Jul/2023 12:02:19] "GET /jquery-3.3.2.slim.min.js HTTP/1.1" 404 -
+206.189.140.99 - - [06/Jul/2023 12:23:38] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x96\x10üÈ`ó\x98\x8b¥\x83À\x91Ü_KbïÀºm·A\x12\x14\x10\x88\x16¨\x08¼\x92²\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+206.189.140.99 - - [06/Jul/2023 12:23:38] " {  wüÈ`ó¥ÀÜ_KbïÀºm·A¨¼²  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+206.189.140.99 - - [06/Jul/2023 12:23:38] code 400, message Bad request version ('À\x14À')
+206.189.140.99 - - [06/Jul/2023 12:23:38] " {  wãDreÖw¢±`]çÍm-Û÷È³ÞËjÖB²M°  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+206.189.140.99 - - [06/Jul/2023 12:23:39] "GET / HTTP/1.1" 404 -
+206.189.140.99 - - [06/Jul/2023 12:23:39] code 400, message Bad request version ('À\x14À')
+206.189.140.99 - - [06/Jul/2023 12:23:39] " {  whiVLW[ÌUÁÿ""=á¬ESWHtÒ'¼D¹f  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+206.189.140.99 - - [06/Jul/2023 12:23:39] "GET /api/islogged HTTP/1.1" 404 -
+168.80.174.2 - - [06/Jul/2023 14:03:05] "GET / HTTP/1.0" 404 -
+168.80.174.2 - - [06/Jul/2023 14:03:06] "GET /favicon.ico HTTP/1.1" 404 -
+168.80.174.2 - - [06/Jul/2023 14:03:06] "GET /robots.txt HTTP/1.1" 404 -
+168.80.174.2 - - [06/Jul/2023 14:03:07] "GET /.well-known/security.txt HTTP/1.1" 404 -
+18.215.29.89 - - [06/Jul/2023 16:35:03] "GET /login?from=%2F HTTP/1.1" 404 -
+95.214.55.244 - - [06/Jul/2023 17:16:05] "GET / HTTP/1.1" 404 -
+91.223.169.83 - - [06/Jul/2023 18:04:00] code 400, message Bad request version ('À\x14À')
+91.223.169.83 - - [06/Jul/2023 18:04:00] " u  qøÅ+blÖþnº^RJ¡C¶æÆRx\ËfoÝß  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+88.249.48.21 - - [06/Jul/2023 20:09:39] "GET / HTTP/1.0" 404 -
+118.123.105.85 - - [06/Jul/2023 21:00:05] code 400, message Bad request syntax ('\x01\x00\x00\x00 ¿\x02\x00\x88\x13\x00\x00\x87\x00\x00\x00NIMABIJIAN\x04\x03\x00\x00{\x99Caig\x9c\x03ÇeBÅ\tÁ\x18a\x11\x1a\x91\x1f\x02\tcof\x91À\x80sJ5Ò\x80æ\x9a~¹Ç\x83^\x96îN\x16\x96\x96&æ\x03ê¼\x81\x02=¬\x10ú?7\x03Ãß÷ä\x98`pæ\x8dÁ©\x8dÆ\x06Û¯\x91ç\x82s÷\x14HÔáW\x9a\x93C\x9e]¤\x01#\x03#\x03]\x03c]CC\x05C\x03+S\x03bô\x00\x00/\x9e\x16E')
+118.123.105.85 - - [06/Jul/2023 21:00:05] "    ¿      NIMABIJIAN  {CaigÇeBÅ	Áa	cofÀsJ5Òæ~¹Ç^îN&æê¼=¬ú?7Ãß÷ä`pæÁ©ÆÛ¯çs÷HÔáWC]¤##]c]CCC+Sbô  /E" HTTPStatus.BAD_REQUEST -
+198.235.24.78 - - [06/Jul/2023 21:36:17] "GET / HTTP/1.1" 404 -
+205.210.31.212 - - [06/Jul/2023 21:38:48] "GET / HTTP/1.1" 404 -
+198.235.24.64 - - [06/Jul/2023 21:49:12] "GET / HTTP/1.1" 404 -
+183.136.225.9 - - [06/Jul/2023 23:22:07] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x80\x0b¨À\x00\x0c)t F\x07\x00tsXrcsXYs9\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00bbXcsXctst\x00\x00\x00\x00\x00\x00')
+183.136.225.9 - - [06/Jul/2023 23:22:07] "   TZ          0I    ¨À )t F tsXrcsXYs9                      bbXcsXctst      " HTTPStatus.BAD_REQUEST -
+198.235.24.183 - - [06/Jul/2023 23:34:10] "GET / HTTP/1.1" 404 -
+45.227.254.55 - - [07/Jul/2023 00:01:57] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.227.254.55 - - [07/Jul/2023 00:01:57] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.223 - - [07/Jul/2023 02:30:30] "GET / HTTP/1.1" 404 -
+198.235.24.111 - - [07/Jul/2023 02:42:53] "GET / HTTP/1.1" 404 -
+198.235.24.215 - - [07/Jul/2023 03:09:36] "GET / HTTP/1.1" 404 -
+205.210.31.201 - - [07/Jul/2023 03:44:46] "GET / HTTP/1.1" 404 -
+205.210.31.76 - - [07/Jul/2023 04:43:03] "GET / HTTP/1.1" 404 -
+205.210.31.233 - - [07/Jul/2023 04:54:06] "GET / HTTP/1.1" 404 -
+205.210.31.240 - - [07/Jul/2023 04:56:05] "GET / HTTP/1.1" 404 -
+198.235.24.50 - - [07/Jul/2023 05:17:16] "GET / HTTP/1.1" 404 -
+80.66.75.63 - - [07/Jul/2023 05:24:34] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.63 - - [07/Jul/2023 05:24:34] "æ" HTTPStatus.BAD_REQUEST -
+87.236.176.61 - - [07/Jul/2023 06:31:42] "GET / HTTP/1.1" 404 -
+198.235.24.205 - - [07/Jul/2023 06:36:07] "GET / HTTP/1.1" 404 -
+184.105.247.222 - - [07/Jul/2023 07:12:56] "GET / HTTP/1.1" 404 -
+184.105.247.234 - - [07/Jul/2023 07:13:31] "GET /favicon.ico HTTP/1.1" 404 -
+184.105.247.214 - - [07/Jul/2023 07:13:54] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+184.105.247.198 - - [07/Jul/2023 07:14:16] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+205.210.31.55 - - [07/Jul/2023 07:42:48] "GET / HTTP/1.1" 404 -
+198.235.24.91 - - [07/Jul/2023 07:55:23] "GET / HTTP/1.1" 404 -
+198.235.24.74 - - [07/Jul/2023 08:31:15] "GET / HTTP/1.1" 404 -
+205.210.31.84 - - [07/Jul/2023 08:33:53] "GET / HTTP/1.1" 404 -
+198.235.24.183 - - [07/Jul/2023 08:45:02] "GET / HTTP/1.1" 404 -
+205.210.31.209 - - [07/Jul/2023 09:21:57] "GET / HTTP/1.1" 404 -
+52.83.92.55 - - [07/Jul/2023 09:56:19] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x10\x04\x01.\x05\x00\x00\x00\x00\x81I¨À\x00\x0c)\x83z»\x01\x00zÚf\x00\x8d\x16Ò~\x9dU\x05ñ\x1fi»©\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00ÃÐ¢|¦v½ó\x1eOÑËÜ®Ëd')
+52.83.92.55 - - [07/Jul/2023 09:56:19] "   TZ         .    I¨À )z» zÚf Ò~Uñi»©                ÃÐ¢|¦v½óOÑËÜ®Ëd" HTTPStatus.BAD_REQUEST -
+205.210.31.36 - - [07/Jul/2023 10:36:46] "GET / HTTP/1.1" 404 -
+198.235.24.122 - - [07/Jul/2023 12:15:49] "GET / HTTP/1.1" 404 -
+205.210.31.26 - - [07/Jul/2023 12:40:14] "GET / HTTP/1.1" 404 -
+103.203.57.20 - - [07/Jul/2023 12:59:00] "GET / HTTP/1.1" 404 -
+80.66.83.115 - - [07/Jul/2023 13:05:32] code 400, message Bad request syntax ('\x16\x03\x01\x01¨\x01\x00\x01¤\x03\x038\x8fIwÝUR·\x02\x1a\x9f\x19"EíÒ|~Û_')
+80.66.83.115 - - [07/Jul/2023 13:05:32] "¨ ¤8IwÝUR·"EíÒ|~Û_" HTTPStatus.BAD_REQUEST -
+152.58.31.39 - - [07/Jul/2023 13:30:17] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x03\x00°\x01\x00\x00¬\x03\x03d§÷IôC¬Ô`üâg+Ð¬\x91')
+152.58.31.39 - - [07/Jul/2023 13:30:17] " °  ¬d§÷IôC¬Ô`üâg+Ð¬­¹a;ø¾;¢sþ÷  &À,À+À0À/À$À#À(À'À" HTTPStatus.BAD_REQUEST -
+162.243.128.11 - - [07/Jul/2023 13:32:07] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+162.243.128.11 - - [07/Jul/2023 13:32:07] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+205.210.31.84 - - [07/Jul/2023 13:40:50] "GET / HTTP/1.1" 404 -
+205.210.31.110 - - [07/Jul/2023 14:24:45] "GET / HTTP/1.1" 404 -
+198.235.24.242 - - [07/Jul/2023 15:57:36] "GET / HTTP/1.1" 404 -
+205.210.31.47 - - [07/Jul/2023 15:59:54] "GET / HTTP/1.1" 404 -
+198.235.24.234 - - [07/Jul/2023 16:24:07] "GET / HTTP/1.1" 404 -
+198.235.24.117 - - [07/Jul/2023 17:17:18] "GET / HTTP/1.1" 404 -
+161.35.190.246 - - [07/Jul/2023 18:46:48] "GET /aaa9 HTTP/1.1" 404 -
+161.35.190.246 - - [07/Jul/2023 18:46:54] "GET /aab8 HTTP/1.1" 404 -
+161.35.190.246 - - [07/Jul/2023 18:46:58] "GET / HTTP/1.1" 404 -
+192.241.238.11 - - [07/Jul/2023 19:46:38] code 400, message Bad request version ('wö')
+192.241.238.11 - - [07/Jul/2023 19:46:38] " {  wÙðÂ.÷Ú³.±®|{wö" HTTPStatus.BAD_REQUEST -
+198.235.24.242 - - [07/Jul/2023 20:05:24] "GET / HTTP/1.1" 404 -
+198.235.24.122 - - [07/Jul/2023 20:23:51] "GET / HTTP/1.1" 404 -
+198.235.24.84 - - [07/Jul/2023 20:37:58] "GET / HTTP/1.1" 404 -
+198.235.24.113 - - [07/Jul/2023 21:00:10] "GET / HTTP/1.1" 404 -
+205.210.31.52 - - [07/Jul/2023 21:08:40] "GET / HTTP/1.1" 404 -
+198.235.24.182 - - [07/Jul/2023 21:26:45] "GET / HTTP/1.1" 404 -
+80.66.88.215 - - [07/Jul/2023 21:38:37] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.66.88.215 - - [07/Jul/2023 21:38:37] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+205.210.31.108 - - [07/Jul/2023 21:59:05] "GET / HTTP/1.1" 404 -
+167.94.146.58 - - [07/Jul/2023 22:32:56] "GET / HTTP/1.1" 404 -
+167.94.146.58 - - [07/Jul/2023 22:32:56] "GET / HTTP/1.1" 404 -
+167.94.146.58 - - [07/Jul/2023 22:32:56] code 505, message Invalid HTTP version (2.0)
+167.94.146.58 - - [07/Jul/2023 22:32:56] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+205.210.31.163 - - [07/Jul/2023 22:53:08] "GET / HTTP/1.1" 404 -
+205.210.31.37 - - [08/Jul/2023 00:12:07] "GET / HTTP/1.1" 404 -
+198.235.24.40 - - [08/Jul/2023 00:54:40] "GET / HTTP/1.1" 404 -
+198.235.24.247 - - [08/Jul/2023 02:03:47] "GET / HTTP/1.1" 404 -
+198.235.24.5 - - [08/Jul/2023 02:08:45] "GET / HTTP/1.1" 404 -
+205.210.31.229 - - [08/Jul/2023 02:13:20] "GET / HTTP/1.1" 404 -
+205.210.31.101 - - [08/Jul/2023 02:35:26] "GET / HTTP/1.1" 404 -
+185.233.19.15 - - [08/Jul/2023 02:51:08] "GET / HTTP/1.1" 404 -
+167.248.133.124 - - [08/Jul/2023 02:57:45] "GET / HTTP/1.1" 404 -
+167.248.133.124 - - [08/Jul/2023 02:57:45] code 505, message Invalid HTTP version (2.0)
+167.248.133.124 - - [08/Jul/2023 02:57:45] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+198.235.24.216 - - [08/Jul/2023 03:11:57] "GET / HTTP/1.1" 404 -
+198.235.24.217 - - [08/Jul/2023 03:27:42] "GET / HTTP/1.1" 404 -
+198.235.24.180 - - [08/Jul/2023 04:22:37] "GET / HTTP/1.1" 404 -
+198.235.24.48 - - [08/Jul/2023 04:35:52] "GET / HTTP/1.1" 404 -
+198.235.24.184 - - [08/Jul/2023 04:52:56] "GET / HTTP/1.1" 404 -
+198.235.24.113 - - [08/Jul/2023 05:29:31] "GET / HTTP/1.1" 404 -
+205.210.31.200 - - [08/Jul/2023 05:54:35] "GET / HTTP/1.1" 404 -
+198.235.24.119 - - [08/Jul/2023 05:54:50] "GET / HTTP/1.1" 404 -
+45.91.171.169 - - [08/Jul/2023 07:44:55] code 400, message Bad request syntax ('\x16\x03\x01\x00u\x01\x00\x00q\x03\x03\x82\x0bE@^Q\x17\x16Q\x9aW/Ð~v-º¬h\x9am\x06\x1cú&\x12¦\x97úÆÿë\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À')
+45.91.171.169 - - [08/Jul/2023 07:44:55] " u  qE@^QQW/Ð~v-º¬hmú&¦úÆÿë  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+198.235.24.72 - - [08/Jul/2023 07:46:36] "GET / HTTP/1.1" 404 -
+185.233.19.38 - - [08/Jul/2023 07:52:07] "GET / HTTP/1.1" 404 -
+185.233.19.38 - - [08/Jul/2023 07:52:07] "GET /favicon.ico HTTP/1.1" 404 -
+205.210.31.105 - - [08/Jul/2023 08:14:51] "GET / HTTP/1.1" 404 -
+118.123.105.86 - - [08/Jul/2023 08:50:12] "GET / HTTP/1.0" 404 -
+118.123.105.86 - - [08/Jul/2023 08:51:03] "GET /robots.txt HTTP/1.1" 404 -
+118.123.105.86 - - [08/Jul/2023 08:51:04] "GET /.well-known/security.txt HTTP/1.1" 404 -
+65.49.1.105 - - [08/Jul/2023 09:23:00] "GET / HTTP/1.1" 404 -
+65.49.1.104 - - [08/Jul/2023 09:23:21] "GET /favicon.ico HTTP/1.1" 404 -
+65.49.1.102 - - [08/Jul/2023 09:23:25] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+65.49.1.104 - - [08/Jul/2023 09:23:28] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+147.78.47.10 - - [08/Jul/2023 10:30:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+147.78.47.10 - - [08/Jul/2023 10:30:43] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+162.142.125.224 - - [08/Jul/2023 12:18:08] "GET / HTTP/1.1" 404 -
+162.142.125.224 - - [08/Jul/2023 12:18:09] "GET / HTTP/1.1" 404 -
+162.142.125.224 - - [08/Jul/2023 12:18:09] code 505, message Invalid HTTP version (2.0)
+162.142.125.224 - - [08/Jul/2023 12:18:09] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+118.123.105.86 - - [08/Jul/2023 13:55:58] code 400, message Bad request syntax ('\x01\x00\x00\x00 ¿\x02\x00\x88\x13\x00\x00\x87\x00\x00\x00NIMABIJIAN\x04\x03\x00\x00{\x99Caig\x9c\x03ÇeBÅ\tÁ\x18a\x11\x1a\x91\x1f\x02\tcof\x91À\x80sJ5Ò\x80æ\x9a~¹Ç\x83^\x96îN\x16\x96\x96&æ\x03ê¼\x81\x02=¬\x10ú?7\x03Ãß÷ä\x98`pæ\x8dÁ©\x8dÆ\x06Û¯\x91ç\x82s÷\x14HÔáW\x9a\x93C\x9e]¤\x01#\x03#\x03]\x03c]CC\x05C\x03+S\x03bô\x00\x00/\x9e\x16E')
+118.123.105.86 - - [08/Jul/2023 13:55:58] "    ¿      NIMABIJIAN  {CaigÇeBÅ	Áa	cofÀsJ5Òæ~¹Ç^îN&æê¼=¬ú?7Ãß÷ä`pæÁ©ÆÛ¯çs÷HÔáWC]¤##]c]CCC+Sbô  /E" HTTPStatus.BAD_REQUEST -
+223.196.65.9 - - [08/Jul/2023 15:44:05] "GET /upload/ocr HTTP/1.1" 200 -
+45.156.129.22 - - [08/Jul/2023 16:16:26] "GET / HTTP/1.1" 404 -
+162.216.149.209 - - [08/Jul/2023 17:29:11] code 400, message Bad request version ('À(À$À\x14À')
+162.216.149.209 - - [08/Jul/2023 17:29:11] " Ê  Ænîu¿HLÔ0÷ÏC÷Í ¡ËVv«%l½þÀw  hÌÌÀ/À+À0À,ÀÀÀ'À#ÀÀ	À(À$ÀÀ" HTTPStatus.BAD_REQUEST -
+95.214.55.244 - - [08/Jul/2023 17:33:22] "GET / HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] code 400, message Bad request syntax ('\x16\x03\x01\x00ê\x01\x00\x00æ\x03\x03\x86¢Ü\x9eâ["\x08·\x1d\x07\xa07ÞÚ¤Z!\x9b\x86\x1aO\x90¥\x08\r@ùì¯\x1a\x96 \x15\x8f²"Ò>ð2ú/]}Cö\x00eC~p¥Î¥_\x04ñTÀ\x08\x94:%ä\x00&À+À/À,À0Ì©Ì¨À\tÀ\x13À')
+164.92.192.25 - - [08/Jul/2023 18:06:20] " ê  æ¢Üâ["· 7ÞÚ¤Z!O¥@ùì¯ ²"Ò>ð2ú/]}Cö eC~p¥Î¥_ñTÀ:%ä &À+À/À,À0Ì©Ì¨À	ÀÀ" HTTPStatus.BAD_REQUEST -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET / HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET / HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET /version HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET /.vscode/sftp.json HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET /about HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET /debug/default/view?panel=config HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:20] "GET /v2/_catalog HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /server-status HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /login.action HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /_all_dbs HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /.DS_Store HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /.env HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /.git/config HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /s/531323e2734313e2931313e25373/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /config.json HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /telescope/requests HTTP/1.1" 404 -
+164.92.192.25 - - [08/Jul/2023 18:06:21] "GET /?rest_route=/wp/v2/users/ HTTP/1.1" 404 -
+107.170.250.8 - - [08/Jul/2023 21:09:31] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.250.8 - - [08/Jul/2023 21:09:31] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+194.165.16.78 - - [08/Jul/2023 21:21:24] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.78 - - [08/Jul/2023 21:21:24] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.232 - - [09/Jul/2023 00:29:21] "GET / HTTP/1.1" 404 -
+87.236.176.148 - - [09/Jul/2023 00:37:03] "GET / HTTP/1.1" 404 -
+80.66.75.63 - - [09/Jul/2023 02:31:57] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.63 - - [09/Jul/2023 02:31:57] "æ" HTTPStatus.BAD_REQUEST -
+167.248.133.51 - - [09/Jul/2023 03:00:33] "GET / HTTP/1.1" 404 -
+167.248.133.51 - - [09/Jul/2023 03:00:34] "GET / HTTP/1.1" 404 -
+167.248.133.51 - - [09/Jul/2023 03:00:34] code 505, message Invalid HTTP version (2.0)
+167.248.133.51 - - [09/Jul/2023 03:00:34] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+198.199.92.105 - - [09/Jul/2023 04:25:41] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03(ì')
+198.199.92.105 - - [09/Jul/2023 04:25:41] " {  w(ìëûÎ" HTTPStatus.BAD_REQUEST -
+60.191.125.35 - - [09/Jul/2023 05:36:53] "HEAD http://112.124.42.80:63435/ HTTP/1.1" 404 -
+107.170.255.21 - - [09/Jul/2023 06:17:12] "GET / HTTP/1.1" 404 -
+103.203.57.20 - - [09/Jul/2023 10:54:10] "GET / HTTP/1.1" 404 -
+167.94.138.50 - - [09/Jul/2023 10:57:36] "GET / HTTP/1.1" 404 -
+167.94.138.50 - - [09/Jul/2023 10:57:37] "GET / HTTP/1.1" 404 -
+167.94.138.50 - - [09/Jul/2023 10:57:37] code 505, message Invalid HTTP version (2.0)
+167.94.138.50 - - [09/Jul/2023 10:57:37] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+184.105.139.73 - - [09/Jul/2023 11:21:27] "GET / HTTP/1.1" 404 -
+184.105.139.81 - - [09/Jul/2023 11:22:01] "GET /favicon.ico HTTP/1.1" 404 -
+184.105.139.69 - - [09/Jul/2023 11:22:23] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+184.105.139.97 - - [09/Jul/2023 11:22:45] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+87.121.221.176 - - [09/Jul/2023 12:04:30] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\r\xa0èeRytüDIKZ\x95CNpÝ\x15\x15\x81à+Zå\x98Ðr\x94Ï\x02\x7fx ÿþ\x8eöEÉ\x8c\x1cù\x93Í\x97öMÍ\x1e#¹xEù\x07à¶3\x01ÀG\xadæ¬\\\x00&À+À/À,À0Ì©Ì¨À\tÀ\x13À')
+87.121.221.176 - - [09/Jul/2023 12:04:30] " î  ê èeRytüDIKZCNpÝà+ZåÐrÏx ÿþöEÉùÍöMÍ#¹xEùà¶3ÀG­æ¬\ &À+À/À,À0Ì©Ì¨À	ÀÀ" HTTPStatus.BAD_REQUEST -
+87.121.221.176 - - [09/Jul/2023 12:04:31] "GET /xd HTTP/1.1" 404 -
+54.37.30.157 - - [09/Jul/2023 16:40:20] "GET / HTTP/1.1" 404 -
+43.155.129.115 - - [09/Jul/2023 17:35:14] code 400, message Bad request version ('À\x13À')
+43.155.129.115 - - [09/Jul/2023 17:35:14] " î  êI²ù¼iÀYûøºe-Ud]·b8´gÆÝ9dZ8f gÁi³öòË°©NÖ½g|püé<Z¡T·é¥8'O; &À+À/À,À0Ì©Ì¨À	ÀÀ" HTTPStatus.BAD_REQUEST -
+43.155.129.115 - - [09/Jul/2023 17:35:25] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [09/Jul/2023 21:16:13] "GET / HTTP/1.1" 404 -
+209.141.41.193 - - [09/Jul/2023 21:16:19] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:16:19] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:16:19] "GET / HTTP/1.1" 404 -
+205.185.121.69 - - [09/Jul/2023 21:16:23] "GET / HTTP/1.1" 404 -
+209.141.36.112 - - [09/Jul/2023 21:16:26] "GET / HTTP/1.1" 404 -
+209.141.44.114 - - [09/Jul/2023 21:16:36] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [09/Jul/2023 21:16:36] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:16:40] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [09/Jul/2023 21:16:41] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:16:41] "GET / HTTP/1.1" 404 -
+209.141.36.112 - - [09/Jul/2023 21:16:43] "GET / HTTP/1.1" 404 -
+209.141.48.154 - - [09/Jul/2023 21:16:43] "GET / HTTP/1.1" 404 -
+209.141.36.112 - - [09/Jul/2023 21:16:48] "GET / HTTP/1.1" 404 -
+209.141.51.222 - - [09/Jul/2023 21:16:50] "GET / HTTP/1.1" 404 -
+209.141.51.222 - - [09/Jul/2023 21:16:50] "GET / HTTP/1.1" 404 -
+205.185.121.69 - - [09/Jul/2023 21:16:56] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [09/Jul/2023 21:17:01] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [09/Jul/2023 21:17:04] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [09/Jul/2023 21:19:26] "GET / HTTP/1.1" 404 -
+209.141.36.231 - - [09/Jul/2023 21:19:28] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [09/Jul/2023 21:19:32] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [09/Jul/2023 21:19:32] "GET / HTTP/1.1" 404 -
+209.141.35.128 - - [09/Jul/2023 21:19:36] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [09/Jul/2023 21:19:39] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:19:39] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [09/Jul/2023 21:19:40] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [09/Jul/2023 21:19:40] "GET / HTTP/1.1" 404 -
+205.185.127.30 - - [09/Jul/2023 21:19:40] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [09/Jul/2023 21:19:48] "GET / HTTP/1.1" 404 -
+209.141.55.120 - - [09/Jul/2023 21:19:49] "GET / HTTP/1.1" 404 -
+209.141.41.193 - - [09/Jul/2023 21:19:51] "GET / HTTP/1.1" 404 -
+209.141.48.154 - - [09/Jul/2023 21:19:57] "GET / HTTP/1.1" 404 -
+209.141.34.187 - - [09/Jul/2023 21:20:03] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [09/Jul/2023 21:20:04] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [09/Jul/2023 21:20:06] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:20:09] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [09/Jul/2023 21:20:16] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [09/Jul/2023 21:20:17] "GET / HTTP/1.1" 404 -
+178.32.197.85 - - [09/Jul/2023 21:23:49] "GET / HTTP/1.1" 404 -
+209.141.41.193 - - [09/Jul/2023 21:34:23] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [09/Jul/2023 21:34:40] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [09/Jul/2023 21:34:48] "GET / HTTP/1.1" 404 -
+209.141.51.222 - - [09/Jul/2023 21:34:50] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [09/Jul/2023 21:34:58] "GET / HTTP/1.1" 404 -
+205.185.121.69 - - [09/Jul/2023 21:35:00] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [09/Jul/2023 21:35:04] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [09/Jul/2023 21:35:06] "GET / HTTP/1.1" 404 -
+209.141.34.187 - - [09/Jul/2023 21:35:11] "GET / HTTP/1.1" 404 -
+209.141.36.231 - - [09/Jul/2023 21:35:19] "GET / HTTP/1.1" 404 -
+209.141.36.112 - - [09/Jul/2023 21:35:19] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [09/Jul/2023 21:35:34] "GET / HTTP/1.1" 404 -
+35.88.43.160 - - [09/Jul/2023 21:37:36] "GET / HTTP/1.1" 404 -
+45.227.254.8 - - [09/Jul/2023 21:38:36] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.227.254.8 - - [09/Jul/2023 21:38:36] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+205.210.31.162 - - [09/Jul/2023 22:45:27] "GET / HTTP/1.1" 404 -
+185.156.72.20 - - [10/Jul/2023 00:04:08] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.156.72.20 - - [10/Jul/2023 00:04:08] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+34.105.42.177 - - [10/Jul/2023 01:51:18] "GET / HTTP/1.1" 404 -
+34.105.42.177 - - [10/Jul/2023 01:51:18] "GET / HTTP/1.1" 404 -
+107.170.243.11 - - [10/Jul/2023 04:36:08] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.243.11 - - [10/Jul/2023 04:36:08] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+185.156.72.20 - - [10/Jul/2023 05:43:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.156.72.20 - - [10/Jul/2023 05:43:03] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+137.184.105.192 - - [10/Jul/2023 07:13:13] "GET /aaa9 HTTP/1.1" 404 -
+137.184.105.192 - - [10/Jul/2023 07:13:13] "GET /aab8 HTTP/1.1" 404 -
+137.184.105.192 - - [10/Jul/2023 07:13:13] "GET / HTTP/1.1" 404 -
+128.14.225.228 - - [10/Jul/2023 08:42:21] code 400, message Bad request syntax ('\x16\x03\x01\x01\t\x01\x00\x01\x05\x03\x03åO\x1b\t¹úZòLK\x1f+7h\x85òÜCò:ØÑ®\x91Þ"\x88\x80\x1f7c\x9a µK±\x893\x05Qü.\x8d\x05\x99Ã¿Ç\x82Úä<\x8c¾AÃÃ\x88qt\\_\x99s8\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À')
+128.14.225.228 - - [10/Jul/2023 08:42:21] "	 åO	¹úZòLK+7hòÜCò:ØÑ®Þ"7c µK±3Qü.Ã¿ÇÚä<¾AÃÃqt\_s8 &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+128.14.225.228 - - [10/Jul/2023 08:42:32] "GET / HTTP/1.1" 404 -
+128.14.225.228 - - [10/Jul/2023 08:42:34] "GET /favicon.ico HTTP/1.1" 404 -
+128.14.225.228 - - [10/Jul/2023 08:42:37] "GET /robots.txt HTTP/1.1" 404 -
+128.14.225.228 - - [10/Jul/2023 08:42:39] "GET /sitemap.xml HTTP/1.1" 404 -
+184.105.139.113 - - [10/Jul/2023 09:16:24] "GET / HTTP/1.1" 404 -
+184.105.139.89 - - [10/Jul/2023 09:16:58] "GET /favicon.ico HTTP/1.1" 404 -
+184.105.139.69 - - [10/Jul/2023 09:17:20] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+184.105.139.97 - - [10/Jul/2023 09:17:42] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+188.166.155.66 - - [10/Jul/2023 10:54:25] code 400, message Bad request version ('À\x14À')
+188.166.155.66 - - [10/Jul/2023 10:54:25] " {  wÖt´êýÚøÅ°Âo-ÔXÉ÷.º¡·è¡ðE¡  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+188.166.155.66 - - [10/Jul/2023 10:54:25] code 400, message Bad request syntax ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03ß¦Æ\x13\x9b\x89ðð@\x8a#Uf\x16'?¸\tåïÁU¢\r_¨BU|\x93Z|\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À")
+188.166.155.66 - - [10/Jul/2023 10:54:25] " {  wß¦Æðð@#Uf'?¸	åïÁU¢_¨BU|Z|  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+188.166.155.66 - - [10/Jul/2023 10:54:25] "GET / HTTP/1.1" 404 -
+188.166.155.66 - - [10/Jul/2023 10:54:25] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x11K$\x0fÙu5ã¶\x88;\xadr-ûÿ\x8dz±\x06\x9eân\x04\x14\x7f7\x90\x95su¼\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+188.166.155.66 - - [10/Jul/2023 10:54:25] " {  wK$Ùu5ã¶;­r-ûÿz±ân7su¼  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+188.166.155.66 - - [10/Jul/2023 10:54:25] "GET /api/islogged HTTP/1.1" 404 -
+185.156.72.20 - - [10/Jul/2023 11:15:35] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.156.72.20 - - [10/Jul/2023 11:15:35] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+192.241.236.64 - - [10/Jul/2023 15:11:51] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03}\x11\x1bñì\x14K\x94\x94¸âî\x0cã[ò°Ô¤h\x94B\x8f\x0b\x86\x1d\x04k$ÖW\x81\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À')
+192.241.236.64 - - [10/Jul/2023 15:11:51] " {  w}ñìK¸âîã[ò°Ô¤hBk$ÖW  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+190.195.69.153 - - [10/Jul/2023 16:13:49] "GET / HTTP/1.0" 404 -
+88.248.21.92 - - [10/Jul/2023 16:39:54] "GET / HTTP/1.0" 404 -
+95.214.55.244 - - [10/Jul/2023 20:44:14] "GET / HTTP/1.1" 404 -
+205.210.31.108 - - [10/Jul/2023 21:19:30] "GET / HTTP/1.1" 404 -
+205.210.31.91 - - [10/Jul/2023 21:30:28] "GET / HTTP/1.1" 404 -
+167.94.145.57 - - [10/Jul/2023 21:36:39] "GET / HTTP/1.1" 404 -
+167.94.145.57 - - [10/Jul/2023 21:36:39] "GET / HTTP/1.1" 404 -
+167.94.145.57 - - [10/Jul/2023 21:36:39] code 505, message Invalid HTTP version (2.0)
+167.94.145.57 - - [10/Jul/2023 21:36:39] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+198.235.24.203 - - [10/Jul/2023 21:41:54] "GET / HTTP/1.1" 404 -
+194.165.16.76 - - [10/Jul/2023 22:13:20] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.76 - - [10/Jul/2023 22:13:20] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+205.210.31.155 - - [10/Jul/2023 22:21:00] "GET / HTTP/1.1" 404 -
+205.210.31.255 - - [10/Jul/2023 23:37:49] "GET / HTTP/1.1" 404 -
+198.235.24.232 - - [11/Jul/2023 01:51:40] "GET / HTTP/1.1" 404 -
+198.235.24.180 - - [11/Jul/2023 02:11:54] "GET / HTTP/1.1" 404 -
+198.235.24.214 - - [11/Jul/2023 02:23:46] "GET / HTTP/1.1" 404 -
+205.210.31.246 - - [11/Jul/2023 03:14:11] "GET / HTTP/1.1" 404 -
+168.80.174.2 - - [11/Jul/2023 03:39:00] "GET / HTTP/1.0" 404 -
+168.80.174.2 - - [11/Jul/2023 03:39:01] "GET /favicon.ico HTTP/1.1" 404 -
+168.80.174.2 - - [11/Jul/2023 03:39:03] "GET /robots.txt HTTP/1.1" 404 -
+168.80.174.2 - - [11/Jul/2023 03:39:04] "GET /.well-known/security.txt HTTP/1.1" 404 -
+205.210.31.78 - - [11/Jul/2023 05:27:52] "GET / HTTP/1.1" 404 -
+64.62.197.171 - - [11/Jul/2023 06:50:24] "GET / HTTP/1.1" 404 -
+64.62.197.173 - - [11/Jul/2023 06:50:38] "GET /favicon.ico HTTP/1.1" 404 -
+64.62.197.169 - - [11/Jul/2023 06:50:41] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+64.62.197.178 - - [11/Jul/2023 06:50:44] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+198.235.24.60 - - [11/Jul/2023 07:11:32] "GET / HTTP/1.1" 404 -
+80.66.75.63 - - [11/Jul/2023 07:21:15] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.63 - - [11/Jul/2023 07:21:15] "æ" HTTPStatus.BAD_REQUEST -
+198.235.24.103 - - [11/Jul/2023 07:43:37] "GET / HTTP/1.1" 404 -
+205.210.31.39 - - [11/Jul/2023 10:38:39] "GET / HTTP/1.1" 404 -
+198.235.24.111 - - [11/Jul/2023 11:00:02] "GET / HTTP/1.1" 404 -
+205.210.31.49 - - [11/Jul/2023 11:19:59] "GET / HTTP/1.1" 404 -
+107.170.245.10 - - [11/Jul/2023 11:35:32] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.245.10 - - [11/Jul/2023 11:35:32] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+198.235.24.46 - - [11/Jul/2023 13:04:55] "GET / HTTP/1.1" 404 -
+198.235.24.154 - - [11/Jul/2023 13:14:44] "GET / HTTP/1.1" 404 -
+198.235.24.33 - - [11/Jul/2023 13:24:24] "GET / HTTP/1.1" 404 -
+193.32.162.190 - - [11/Jul/2023 13:28:12] "GET /../../mnt/mtd/Config/Account1 HTTP/1.1" 404 -
+71.6.134.230 - - [11/Jul/2023 13:37:38] "GET / HTTP/1.1" 404 -
+198.235.24.245 - - [11/Jul/2023 13:45:22] "GET / HTTP/1.1" 404 -
+71.6.134.230 - - [11/Jul/2023 13:53:07] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03î(`ÊÆ\x15,M£ñZE\x01c]\x1eÛ7í(\x8btCº\x8b\x8di´ü¹·\x0e NÂWm{Éöøv-\x81\x9dþ\x9eõ\x1e\x1a\x91è\x98ö\x84W×\x85ßÅ\x99/\x15úÒ\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À')
+71.6.134.230 - - [11/Jul/2023 13:53:07] " î  êî(`ÊÆ,M£ñZEc]Û7í(tCºi´ü¹· NÂWm{Éöøv-þõèöW×ßÅ/úÒ &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+193.32.162.190 - - [11/Jul/2023 13:55:23] "GET /../../mnt/mtd/Config/Account2 HTTP/1.1" 404 -
+198.235.24.249 - - [11/Jul/2023 14:11:08] "GET / HTTP/1.1" 404 -
+198.235.24.60 - - [11/Jul/2023 14:26:29] "GET / HTTP/1.1" 404 -
+205.210.31.10 - - [11/Jul/2023 14:49:19] "GET / HTTP/1.1" 404 -
+162.142.125.225 - - [11/Jul/2023 15:24:03] "GET / HTTP/1.1" 404 -
+162.142.125.225 - - [11/Jul/2023 15:24:04] "GET / HTTP/1.1" 404 -
+162.142.125.225 - - [11/Jul/2023 15:24:04] code 505, message Invalid HTTP version (2.0)
+162.142.125.225 - - [11/Jul/2023 15:24:04] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+205.210.31.218 - - [11/Jul/2023 16:19:12] "GET / HTTP/1.1" 404 -
+198.235.24.206 - - [11/Jul/2023 16:38:28] "GET / HTTP/1.1" 404 -
+198.235.24.72 - - [11/Jul/2023 18:06:35] "GET / HTTP/1.1" 404 -
+205.210.31.21 - - [11/Jul/2023 19:25:12] "GET / HTTP/1.1" 404 -
+162.142.125.214 - - [11/Jul/2023 19:26:11] "GET / HTTP/1.1" 404 -
+162.142.125.214 - - [11/Jul/2023 19:26:11] code 505, message Invalid HTTP version (2.0)
+162.142.125.214 - - [11/Jul/2023 19:26:11] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+198.235.24.55 - - [11/Jul/2023 19:27:28] "GET / HTTP/1.1" 404 -
+205.210.31.104 - - [11/Jul/2023 19:28:57] "GET / HTTP/1.1" 404 -
+198.235.24.186 - - [11/Jul/2023 20:01:58] "GET / HTTP/1.1" 404 -
+205.210.31.249 - - [11/Jul/2023 20:07:08] "GET / HTTP/1.1" 404 -
+167.94.138.33 - - [11/Jul/2023 21:30:54] "GET / HTTP/1.1" 404 -
+167.94.138.33 - - [11/Jul/2023 21:30:55] "GET / HTTP/1.1" 404 -
+167.94.138.33 - - [11/Jul/2023 21:30:55] code 505, message Invalid HTTP version (2.0)
+167.94.138.33 - - [11/Jul/2023 21:30:55] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+205.210.31.46 - - [11/Jul/2023 21:58:05] "GET / HTTP/1.1" 404 -
+95.214.55.244 - - [11/Jul/2023 22:43:06] "GET / HTTP/1.1" 404 -
+198.235.24.17 - - [11/Jul/2023 23:02:49] "GET / HTTP/1.1" 404 -
+71.6.134.235 - - [11/Jul/2023 23:07:44] "GET / HTTP/1.1" 404 -
+71.6.134.235 - - [11/Jul/2023 23:23:13] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03¹p\x1dûíáÁ¥\\!§îì¢\x9f\x0b%©\x81\x9dT(Î`=²òû_,\x1eª Íl\x14\x89w\x7fçÕ¯Ðc;1ìdY\x8a~\x9b\x89È,\x14ä\x84¡Hé\x06+>n\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À')
+71.6.134.235 - - [11/Jul/2023 23:23:13] " î  ê¹pûíáÁ¥\!§îì¢%©T(Î`=²òû_,ª ÍlwçÕ¯Ðc;1ìdY~È,ä¡Hé+>n &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+64.62.197.156 - - [12/Jul/2023 02:20:03] "GET / HTTP/1.1" 404 -
+64.62.197.157 - - [12/Jul/2023 02:20:14] "GET /favicon.ico HTTP/1.1" 404 -
+64.62.197.163 - - [12/Jul/2023 02:20:18] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+64.62.197.159 - - [12/Jul/2023 02:20:24] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+205.210.31.218 - - [12/Jul/2023 02:39:04] "GET / HTTP/1.1" 404 -
+205.210.31.36 - - [12/Jul/2023 02:52:23] "GET / HTTP/1.1" 404 -
+205.210.31.94 - - [12/Jul/2023 03:58:45] "GET / HTTP/1.1" 404 -
+205.210.31.228 - - [12/Jul/2023 04:11:16] "GET / HTTP/1.1" 404 -
+205.210.31.212 - - [12/Jul/2023 04:34:29] "GET / HTTP/1.1" 404 -
+205.210.31.171 - - [12/Jul/2023 04:42:46] "GET / HTTP/1.1" 404 -
+205.210.31.91 - - [12/Jul/2023 05:22:16] "GET / HTTP/1.1" 404 -
+205.210.31.164 - - [12/Jul/2023 05:48:37] "GET / HTTP/1.1" 404 -
+162.243.146.29 - - [12/Jul/2023 06:16:29] "GET / HTTP/1.1" 404 -
+87.236.176.73 - - [12/Jul/2023 06:36:29] "GET / HTTP/1.1" 404 -
+198.235.24.248 - - [12/Jul/2023 06:51:56] "GET / HTTP/1.1" 404 -
+198.235.24.41 - - [12/Jul/2023 07:34:09] "GET / HTTP/1.1" 404 -
+198.235.24.84 - - [12/Jul/2023 08:15:35] "GET / HTTP/1.1" 404 -
+198.235.24.167 - - [12/Jul/2023 08:40:47] "GET / HTTP/1.1" 404 -
+45.224.156.34 - - [12/Jul/2023 10:16:35] "GET / HTTP/1.0" 404 -
+165.154.128.127 - - [12/Jul/2023 14:36:11] "GET / HTTP/1.1" 404 -
+165.154.128.127 - - [12/Jul/2023 14:36:12] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03Ùkm\x9aÀ¦\x06\x86\x15X5ÍÁâëÑÃ§\x8f\x1a+gG1\x18fê*Ù\x8e\x01<')
+165.154.128.127 - - [12/Jul/2023 14:36:12] " î  êÙkmÀ¦X5ÍÁâëÑÃ§+gG1fê*Ù< ÓÔ=½ÝFêvUgÛ¹]" HTTPStatus.BAD_REQUEST -
+152.32.174.92 - - [12/Jul/2023 14:38:11] "GET / HTTP/1.1" 404 -
+152.32.174.92 - - [12/Jul/2023 14:38:11] "GET /favicon.ico HTTP/1.1" 404 -
+152.32.174.92 - - [12/Jul/2023 14:38:12] "GET /sitemap.xml HTTP/1.1" 404 -
+152.32.174.92 - - [12/Jul/2023 14:38:12] "GET /robots.txt HTTP/1.1" 404 -
+194.165.16.10 - - [12/Jul/2023 14:48:26] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.10 - - [12/Jul/2023 14:48:26] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+192.241.217.13 - - [12/Jul/2023 18:35:31] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+192.241.217.13 - - [12/Jul/2023 18:35:31] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+146.190.119.189 - - [12/Jul/2023 18:36:33] "GET /aaa9 HTTP/1.1" 404 -
+146.190.119.189 - - [12/Jul/2023 18:36:36] "GET /aab8 HTTP/1.1" 404 -
+146.190.119.189 - - [12/Jul/2023 18:36:38] "GET / HTTP/1.1" 404 -
+167.172.32.99 - - [12/Jul/2023 18:43:43] "GET / HTTP/1.1" 404 -
+45.91.171.169 - - [12/Jul/2023 19:34:50] code 400, message Bad request syntax ("\x16\x03\x01\x00u\x01\x00\x00q\x03\x03Ô´\x073\x80Æ¡vº¤FlH¯þ\x1d(\x8dr\x14\x91'\x1c«oÂ\x0bßãü\x12\x9e\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À")
+45.91.171.169 - - [12/Jul/2023 19:34:50] " u  qÔ´3Æ¡vº¤FlH¯þ(r'«oÂßãü  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+167.248.133.127 - - [12/Jul/2023 20:12:45] "GET / HTTP/1.1" 404 -
+167.248.133.127 - - [12/Jul/2023 20:12:45] "GET / HTTP/1.1" 404 -
+167.248.133.127 - - [12/Jul/2023 20:12:46] code 505, message Invalid HTTP version (2.0)
+167.248.133.127 - - [12/Jul/2023 20:12:46] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+193.106.151.156 - - [12/Jul/2023 21:12:48] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+193.106.151.156 - - [12/Jul/2023 21:12:48] "    c                           " HTTPStatus.BAD_REQUEST -
+198.74.56.46 - - [12/Jul/2023 22:31:29] "GET / HTTP/1.1" 404 -
+80.66.75.63 - - [13/Jul/2023 01:53:36] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.63 - - [13/Jul/2023 01:53:36] "æ" HTTPStatus.BAD_REQUEST -
+45.33.80.243 - - [13/Jul/2023 05:17:33] code 400, message Bad request syntax ('\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03@\x8cÖó\x0es.h\xad=\x86Å¿y\x1b\x0e[\x7fxSá£ùÐ\x005\xa0å\x16ù\x07¯\x00\x00 À/À0À+À,Ì¨Ì©À\x13À\tÀ\x14À')
+45.33.80.243 - - [13/Jul/2023 05:17:34] "   @Öós.h­=Å¿y[xSá£ùÐ 5 åù¯   À/À0À+À,Ì¨Ì©ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+198.199.97.39 - - [13/Jul/2023 07:40:14] "GET / HTTP/1.1" 404 -
+95.214.55.244 - - [13/Jul/2023 08:11:15] "GET / HTTP/1.1" 404 -
+104.192.1.166 - - [13/Jul/2023 09:32:20] code 400, message Bad request syntax ('strawberrypumpkins')
+104.192.1.166 - - [13/Jul/2023 09:32:20] "strawberrypumpkins" HTTPStatus.BAD_REQUEST -
+198.235.24.80 - - [13/Jul/2023 09:50:19] "GET / HTTP/1.1" 404 -
+192.241.206.16 - - [13/Jul/2023 11:21:51] code 400, message Bad request version ('À\x14À')
+192.241.206.16 - - [13/Jul/2023 11:21:51] " {  w@cçrBâØ\gÍûgÎ#9a©/â¬>  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+184.105.139.85 - - [13/Jul/2023 11:32:28] "GET / HTTP/1.1" 404 -
+184.105.139.73 - - [13/Jul/2023 11:33:14] "GET /favicon.ico HTTP/1.1" 404 -
+184.105.139.89 - - [13/Jul/2023 11:33:42] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+184.105.139.117 - - [13/Jul/2023 11:34:05] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+80.66.75.63 - - [13/Jul/2023 16:25:09] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.63 - - [13/Jul/2023 16:25:10] "æ" HTTPStatus.BAD_REQUEST -
+45.128.232.84 - - [13/Jul/2023 18:04:27] "CONNECT www.twitch.tv:443 HTTP/1.1" 404 -
+192.155.90.220 - - [13/Jul/2023 18:15:02] "GET / HTTP/1.1" 404 -
+35.203.211.161 - - [13/Jul/2023 19:05:38] code 400, message Bad request version ('À(À$À\x14À')
+35.203.211.161 - - [13/Jul/2023 19:05:38] " Ê  ÆèÉ&'¶ KÓGO8ïÁ)9YWäâ<ÅÍà  hÌÌÀ/À+À0À,ÀÀÀ'À#ÀÀ	À(À$ÀÀ" HTTPStatus.BAD_REQUEST -
+198.235.24.66 - - [13/Jul/2023 21:27:41] "GET / HTTP/1.1" 404 -
+198.235.24.96 - - [13/Jul/2023 23:18:05] "GET / HTTP/1.1" 404 -
+205.210.31.77 - - [13/Jul/2023 23:57:19] "GET / HTTP/1.1" 404 -
+198.235.24.79 - - [14/Jul/2023 01:14:26] "GET / HTTP/1.1" 404 -
+107.6.112.252 - - [14/Jul/2023 01:23:46] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03j "JH\x1dÐ\x13kO¼Ot©¿#gþY.æ»´/ö\x1aè9(µ2Â t¹Æe(\x19÷h[Ñ#\x86ÛÌ\x93I\x80E%«pMPq360\x1c\x96')
+107.6.112.252 - - [14/Jul/2023 01:23:46] " î  êj "JHÐkO¼Ot©¿#gþY.æ»´/öè9(µ2Â t¹Æe(÷h[Ñ#ÛÌIE%«pMPq360" HTTPStatus.BAD_REQUEST -
+107.170.237.15 - - [14/Jul/2023 01:27:39] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.237.15 - - [14/Jul/2023 01:27:39] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+205.210.31.234 - - [14/Jul/2023 01:37:05] "GET / HTTP/1.1" 404 -
+167.71.34.229 - - [14/Jul/2023 02:14:09] "GET / HTTP/1.1" 404 -
+64.62.197.146 - - [14/Jul/2023 02:21:24] "GET / HTTP/1.1" 404 -
+64.62.197.140 - - [14/Jul/2023 02:21:34] "GET /favicon.ico HTTP/1.1" 404 -
+64.62.197.139 - - [14/Jul/2023 02:21:37] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+64.62.197.150 - - [14/Jul/2023 02:21:40] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+107.6.112.252 - - [14/Jul/2023 02:24:16] "GET / HTTP/1.1" 404 -
+107.6.112.252 - - [14/Jul/2023 02:24:41] "GET /favicon.ico HTTP/1.1" 404 -
+205.210.31.94 - - [14/Jul/2023 03:03:59] "GET / HTTP/1.1" 404 -
+205.210.31.210 - - [14/Jul/2023 03:05:58] "GET / HTTP/1.1" 404 -
+198.235.24.178 - - [14/Jul/2023 03:07:16] "GET / HTTP/1.1" 404 -
+205.210.31.172 - - [14/Jul/2023 04:03:39] "GET / HTTP/1.1" 404 -
+205.210.31.211 - - [14/Jul/2023 05:01:32] "GET / HTTP/1.1" 404 -
+198.235.24.92 - - [14/Jul/2023 05:16:11] "GET / HTTP/1.1" 404 -
+167.94.138.49 - - [14/Jul/2023 06:05:47] "GET / HTTP/1.1" 404 -
+167.94.138.49 - - [14/Jul/2023 06:05:47] "GET / HTTP/1.1" 404 -
+167.94.138.49 - - [14/Jul/2023 06:05:48] code 505, message Invalid HTTP version (2.0)
+167.94.138.49 - - [14/Jul/2023 06:05:48] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+205.210.31.233 - - [14/Jul/2023 06:25:39] "GET / HTTP/1.1" 404 -
+205.210.31.236 - - [14/Jul/2023 08:30:26] "GET / HTTP/1.1" 404 -
+198.235.24.222 - - [14/Jul/2023 09:33:43] "GET / HTTP/1.1" 404 -
+45.227.254.49 - - [14/Jul/2023 10:10:19] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.227.254.49 - - [14/Jul/2023 10:10:19] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+104.192.1.166 - - [14/Jul/2023 10:13:41] code 400, message Bad request syntax ('JDWP-Handshake')
+104.192.1.166 - - [14/Jul/2023 10:13:41] "JDWP-Handshake" HTTPStatus.BAD_REQUEST -
+198.235.24.151 - - [14/Jul/2023 10:33:02] "GET / HTTP/1.1" 404 -
+205.210.31.36 - - [14/Jul/2023 10:54:13] "GET / HTTP/1.1" 404 -
+185.167.96.150 - - [14/Jul/2023 11:11:46] code 400, message Bad request syntax ('\x16\x03\x01\x00u\x01\x00\x00q\x03\x03!(,¸\x96¦ª\x15ð\x9a´ü\x02(ÿ\x1a3\x89Æ\x02Wã¾k\x8d\x85&#O\x1eJÖ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À')
+185.167.96.150 - - [14/Jul/2023 11:11:46] " u  q!(,¸¦ªð´ü(ÿ3ÆWã¾k&#OJÖ  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+205.210.31.175 - - [14/Jul/2023 11:23:27] "GET / HTTP/1.1" 404 -
+205.210.31.59 - - [14/Jul/2023 11:34:34] "GET / HTTP/1.1" 404 -
+205.210.31.40 - - [14/Jul/2023 11:35:59] "GET / HTTP/1.1" 404 -
+205.210.31.233 - - [14/Jul/2023 12:30:37] "GET / HTTP/1.1" 404 -
+91.88.168.190 - - [14/Jul/2023 13:29:38] "GET / HTTP/1.0" 404 -
+80.66.75.74 - - [14/Jul/2023 15:20:10] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.74 - - [14/Jul/2023 15:20:10] "æ" HTTPStatus.BAD_REQUEST -
+185.11.61.117 - - [14/Jul/2023 15:32:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.11.61.117 - - [14/Jul/2023 15:32:43] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.46 - - [14/Jul/2023 17:08:25] "GET / HTTP/1.1" 404 -
+198.235.24.224 - - [14/Jul/2023 18:37:33] "GET / HTTP/1.1" 404 -
+198.235.24.194 - - [14/Jul/2023 18:43:39] "GET / HTTP/1.1" 404 -
+198.235.24.44 - - [14/Jul/2023 18:59:06] "GET / HTTP/1.1" 404 -
+198.235.24.253 - - [14/Jul/2023 20:48:25] "GET / HTTP/1.1" 404 -
+198.235.24.64 - - [14/Jul/2023 20:50:38] "GET / HTTP/1.1" 404 -
+198.235.24.5 - - [14/Jul/2023 20:53:44] "GET / HTTP/1.1" 404 -
+205.210.31.200 - - [14/Jul/2023 22:31:04] "GET / HTTP/1.1" 404 -
+170.64.154.131 - - [14/Jul/2023 22:49:28] "GET /aaa9 HTTP/1.1" 404 -
+170.64.154.131 - - [14/Jul/2023 22:49:28] "GET /aab8 HTTP/1.1" 404 -
+170.64.154.131 - - [14/Jul/2023 22:49:29] "GET / HTTP/1.1" 404 -
+205.210.31.198 - - [15/Jul/2023 00:31:56] "GET / HTTP/1.1" 404 -
+205.210.31.219 - - [15/Jul/2023 01:07:33] "GET / HTTP/1.1" 404 -
+198.235.24.242 - - [15/Jul/2023 01:18:09] "GET / HTTP/1.1" 404 -
+87.236.176.74 - - [15/Jul/2023 01:29:46] "GET / HTTP/1.1" 404 -
+185.224.128.17 - - [15/Jul/2023 01:33:58] "CONNECT example.com:80 HTTP/1.1" 404 -
+185.224.128.17 - - [15/Jul/2023 01:34:13] code 400, message Bad request syntax ('\x04\x01\x00P\x00\x00\x00\x01\x00example.com\x00')
+185.224.128.17 - - [15/Jul/2023 01:34:13] " P    example.com " HTTPStatus.BAD_REQUEST -
+185.224.128.17 - - [15/Jul/2023 01:34:13] code 400, message Bad request syntax ('\x05\x01\x00')
+185.224.128.17 - - [15/Jul/2023 01:34:13] " " HTTPStatus.BAD_REQUEST -
+198.235.24.166 - - [15/Jul/2023 01:50:39] "GET / HTTP/1.1" 404 -
+34.16.141.189 - - [15/Jul/2023 02:26:19] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:19] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:20] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:20] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:20] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:20] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:20] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:20] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:21] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:21] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:21] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:21] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:21] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:21] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:22] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:22] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+34.16.141.189 - - [15/Jul/2023 02:26:22] code 400, message Bad request syntax ('\x00\x00\x00TZ\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x04\x010I\x00\x00\x00\x00\x03\x00¶')
+34.16.141.189 - - [15/Jul/2023 02:26:22] "   TZ          0I     ¶" HTTPStatus.BAD_REQUEST -
+198.235.24.229 - - [15/Jul/2023 02:41:29] "GET / HTTP/1.1" 404 -
+198.235.24.214 - - [15/Jul/2023 03:24:54] "GET / HTTP/1.1" 404 -
+205.210.31.196 - - [15/Jul/2023 03:33:03] "GET / HTTP/1.1" 404 -
+205.210.31.86 - - [15/Jul/2023 03:33:50] "GET / HTTP/1.1" 404 -
+80.66.83.62 - - [15/Jul/2023 04:19:55] code 400, message Bad request version ('_î')
+80.66.83.62 - - [15/Jul/2023 04:19:55] "¨ ¤V¡p¬HåùMßÆ¨Ûx1®8¯Oëx@Àûÿ Þ_î" HTTPStatus.BAD_REQUEST -
+205.210.31.48 - - [15/Jul/2023 04:55:24] "GET / HTTP/1.1" 404 -
+198.235.24.220 - - [15/Jul/2023 05:17:15] "GET / HTTP/1.1" 404 -
+205.210.31.244 - - [15/Jul/2023 05:33:43] "GET / HTTP/1.1" 404 -
+2.57.122.217 - - [15/Jul/2023 05:46:34] "GET / HTTP/1.1" 404 -
+2.57.122.217 - - [15/Jul/2023 05:46:34] "GET /favicon.ico HTTP/1.1" 404 -
+162.243.145.22 - - [15/Jul/2023 06:16:39] "GET / HTTP/1.1" 404 -
+80.66.88.215 - - [15/Jul/2023 07:29:11] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.66.88.215 - - [15/Jul/2023 07:29:11] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+205.210.31.167 - - [15/Jul/2023 07:33:40] "GET / HTTP/1.1" 404 -
+205.210.31.251 - - [15/Jul/2023 07:39:17] "GET / HTTP/1.1" 404 -
+107.170.225.16 - - [15/Jul/2023 07:55:28] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.225.16 - - [15/Jul/2023 07:55:28] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+198.235.24.114 - - [15/Jul/2023 09:50:36] "GET / HTTP/1.1" 404 -
+94.102.61.48 - - [15/Jul/2023 10:18:39] "GET / HTTP/1.1" 404 -
+107.170.253.35 - - [15/Jul/2023 10:49:16] code 400, message Bad request version ('À\x14À')
+107.170.253.35 - - [15/Jul/2023 10:49:16] " {  w ]F%Íô JÖ+2bäÚR,+5wÓ:  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+198.235.24.167 - - [15/Jul/2023 11:24:29] "GET / HTTP/1.1" 404 -
+64.62.197.91 - - [15/Jul/2023 11:26:08] "GET / HTTP/1.1" 404 -
+64.62.197.81 - - [15/Jul/2023 11:26:18] "GET /favicon.ico HTTP/1.1" 404 -
+64.62.197.79 - - [15/Jul/2023 11:26:22] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+64.62.197.85 - - [15/Jul/2023 11:26:25] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+190.211.252.2 - - [15/Jul/2023 11:29:34] code 400, message Bad request syntax ('\x16\x03\x01\x00Ù\x01\x00\x00Õ\x03\x03ï´ÚbÈÐ\x07ÔC¹ÙÅ\x0bøÿæJ§+f;Æ\x15\x12~q,.\x81E~4 ¹ø,@\x95mú%%\x9e\x00XS\x8f¼ùÅ\x81\x88\x17Í~÷\x86óå\x8e\x9a,=\x8f¶\x00\x14\x13\x02\x13\x01\x13\x03À,À+Ì©À0À/Ì¨\x00ÿ\x01\x00\x00x\x00+\x00\x05\x04\x03\x04\x03\x03\x00\x0b\x00\x02\x01\x00\x00')
+190.211.252.2 - - [15/Jul/2023 11:29:34] " Ù  Õï´ÚbÈÐÔC¹ÙÅøÿæJ§+f;Æ~q,.E~4 ¹ø,@mú%% XS¼ùÅÍ~÷óå,=¶ À,À+Ì©À0À/Ì¨ ÿ  x +     " HTTPStatus.BAD_REQUEST -
+45.155.91.80 - - [15/Jul/2023 11:50:41] "GET / HTTP/1.1" 404 -
+198.235.24.171 - - [15/Jul/2023 13:15:35] "GET / HTTP/1.1" 404 -
+192.241.205.75 - - [15/Jul/2023 16:02:38] "GET / HTTP/1.1" 404 -
+167.248.133.33 - - [15/Jul/2023 18:48:01] "GET / HTTP/1.1" 404 -
+167.248.133.33 - - [15/Jul/2023 18:48:02] code 505, message Invalid HTTP version (2.0)
+167.248.133.33 - - [15/Jul/2023 18:48:02] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+151.106.34.161 - - [15/Jul/2023 23:20:57] "GET / HTTP/1.1" 404 -
+95.214.55.244 - - [16/Jul/2023 01:34:40] "GET / HTTP/1.1" 404 -
+192.241.209.158 - - [16/Jul/2023 02:43:23] "GET / HTTP/1.1" 404 -
+43.157.65.152 - - [16/Jul/2023 04:02:16] code 400, message Bad request version ('À\x13À')
+43.157.65.152 - - [16/Jul/2023 04:02:16] " î  êI²ù¼iÀYûøºe-Ud]·b8´gÆÝ9dZ8f gÁi³öòË°©NÖ½g|püé<Z¡T·é¥8'O; &À+À/À,À0Ì©Ì¨À	ÀÀ" HTTPStatus.BAD_REQUEST -
+43.157.65.152 - - [16/Jul/2023 04:02:26] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:08:27] "GET / HTTP/1.1" 404 -
+209.141.35.128 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+209.141.41.193 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+209.141.55.120 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+209.141.35.128 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+209.141.51.222 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+205.185.121.69 - - [16/Jul/2023 04:08:28] "GET / HTTP/1.1" 404 -
+209.141.36.231 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+209.141.44.114 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+209.141.55.120 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+209.141.44.114 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+205.185.116.25 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+209.141.48.154 - - [16/Jul/2023 04:08:29] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:08:30] "GET / HTTP/1.1" 404 -
+209.141.51.222 - - [16/Jul/2023 04:08:30] "GET / HTTP/1.1" 404 -
+209.141.55.120 - - [16/Jul/2023 04:08:30] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [16/Jul/2023 04:08:30] "GET / HTTP/1.1" 404 -
+209.141.35.128 - - [16/Jul/2023 04:08:30] "GET / HTTP/1.1" 404 -
+209.141.48.154 - - [16/Jul/2023 04:08:30] "GET / HTTP/1.1" 404 -
+209.141.49.169 - - [16/Jul/2023 04:08:31] "GET / HTTP/1.1" 404 -
+209.141.48.154 - - [16/Jul/2023 04:08:31] "GET / HTTP/1.1" 404 -
+205.185.121.69 - - [16/Jul/2023 04:08:31] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [16/Jul/2023 04:08:31] "GET / HTTP/1.1" 404 -
+209.141.36.231 - - [16/Jul/2023 04:08:31] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:08:31] "GET / HTTP/1.1" 404 -
+209.141.36.231 - - [16/Jul/2023 04:08:32] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [16/Jul/2023 04:08:32] "GET / HTTP/1.1" 404 -
+209.141.34.187 - - [16/Jul/2023 04:08:32] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [16/Jul/2023 04:08:32] "GET / HTTP/1.1" 404 -
+209.141.35.128 - - [16/Jul/2023 04:08:33] "GET / HTTP/1.1" 404 -
+209.141.55.120 - - [16/Jul/2023 04:08:33] "GET / HTTP/1.1" 404 -
+209.141.32.227 - - [16/Jul/2023 04:08:33] "GET / HTTP/1.1" 404 -
+209.141.48.154 - - [16/Jul/2023 04:08:33] "GET / HTTP/1.1" 404 -
+205.185.121.69 - - [16/Jul/2023 04:08:35] "GET / HTTP/1.1" 404 -
+205.185.127.30 - - [16/Jul/2023 04:08:35] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:08:35] "GET / HTTP/1.1" 404 -
+205.185.127.30 - - [16/Jul/2023 04:08:42] "GET / HTTP/1.1" 404 -
+209.141.49.169 - - [16/Jul/2023 04:08:47] "GET / HTTP/1.1" 404 -
+205.185.127.30 - - [16/Jul/2023 04:08:54] "GET / HTTP/1.1" 404 -
+205.185.116.89 - - [16/Jul/2023 04:39:29] "GET / HTTP/1.1" 404 -
+209.141.41.193 - - [16/Jul/2023 04:39:30] "GET / HTTP/1.1" 404 -
+205.185.122.184 - - [16/Jul/2023 04:39:30] "GET / HTTP/1.1" 404 -
+209.141.33.65 - - [16/Jul/2023 04:39:30] "GET / HTTP/1.1" 404 -
+209.141.35.128 - - [16/Jul/2023 04:39:30] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [16/Jul/2023 04:39:31] "GET / HTTP/1.1" 404 -
+205.185.118.120 - - [16/Jul/2023 04:39:32] "GET / HTTP/1.1" 404 -
+209.141.41.193 - - [16/Jul/2023 04:39:34] "GET / HTTP/1.1" 404 -
+185.170.144.3 - - [16/Jul/2023 05:19:33] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.170.144.3 - - [16/Jul/2023 05:19:33] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+45.227.254.55 - - [16/Jul/2023 05:51:16] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.227.254.55 - - [16/Jul/2023 05:51:16] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.103 - - [16/Jul/2023 06:09:52] "GET / HTTP/1.1" 404 -
+65.49.20.66 - - [16/Jul/2023 06:50:30] "GET / HTTP/1.1" 404 -
+65.49.20.78 - - [16/Jul/2023 06:51:16] "GET /favicon.ico HTTP/1.1" 404 -
+65.49.20.122 - - [16/Jul/2023 06:51:38] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+65.49.20.66 - - [16/Jul/2023 06:52:01] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+45.156.129.12 - - [16/Jul/2023 08:19:31] "GET / HTTP/1.1" 404 -
+45.156.129.12 - - [16/Jul/2023 08:19:39] "GET /admin/ HTTP/1.1" 404 -
+45.156.129.12 - - [16/Jul/2023 08:19:40] "GET / HTTP/1.1" 404 -
+80.66.75.74 - - [16/Jul/2023 10:01:14] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.74 - - [16/Jul/2023 10:01:14] "æ" HTTPStatus.BAD_REQUEST -
+142.4.218.114 - - [16/Jul/2023 11:41:06] "GET / HTTP/1.1" 404 -
+79.137.65.46 - - [16/Jul/2023 13:00:40] "GET /favicon.ico HTTP/1.1" 404 -
+178.32.197.91 - - [16/Jul/2023 13:17:11] "GET / HTTP/1.1" 404 -
+79.137.65.46 - - [16/Jul/2023 14:26:28] "GET /favicon.ico HTTP/1.1" 404 -
+107.170.227.33 - - [16/Jul/2023 14:44:16] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.227.33 - - [16/Jul/2023 14:44:16] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+172.105.128.13 - - [16/Jul/2023 14:49:55] code 400, message Bad request syntax ('\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03|_Þ\x04\x80Ï3§w[bø£ñC\x01Mij¸:Rì£Ï»qðyBUÝ\x00\x00 À/À0À+À,Ì¨Ì©À\x13À\tÀ\x14À')
+172.105.128.13 - - [16/Jul/2023 14:49:55] "   |_ÞÏ3§w[bø£ñCMij¸:Rì£Ï»qðyBUÝ   À/À0À+À,Ì¨Ì©ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+172.104.11.46 - - [16/Jul/2023 16:35:07] "GET / HTTP/1.1" 404 -
+91.162.33.2 - - [16/Jul/2023 18:01:50] "GET / HTTP/1.0" 404 -
+190.15.205.52 - - [16/Jul/2023 18:18:38] "GET / HTTP/1.0" 404 -
+80.66.75.74 - - [16/Jul/2023 18:19:02] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.74 - - [16/Jul/2023 18:19:02] "æ" HTTPStatus.BAD_REQUEST -
+152.32.180.171 - - [16/Jul/2023 19:08:37] code 400, message Bad request syntax ('\x16\x03\x01\x01\t\x01\x00\x01\x05\x03\x03·öÿ\x1ae$êÈÊ\x18%\x94Ø|b+èùú¿\x15JrTµ8½\x82i¢5Ï lâÑpWØVÙ\x9c5¡aÂ\xadâdÐI\x1eBO´\x06)%áø]]w3\x8b\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À')
+152.32.180.171 - - [16/Jul/2023 19:08:37] "	 ·öÿe$êÈÊ%Ø|b+èùú¿JrTµ8½i¢5Ï lâÑpWØVÙ5¡aÂ­âdÐIBO´)%áø]]w3 &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+152.32.180.171 - - [16/Jul/2023 19:08:49] "GET / HTTP/1.1" 404 -
+152.32.180.171 - - [16/Jul/2023 19:08:50] "GET /favicon.ico HTTP/1.1" 404 -
+152.32.180.171 - - [16/Jul/2023 19:08:52] "GET /robots.txt HTTP/1.1" 404 -
+152.32.180.171 - - [16/Jul/2023 19:08:54] "GET /sitemap.xml HTTP/1.1" 404 -
+167.248.133.37 - - [17/Jul/2023 01:35:18] "GET / HTTP/1.1" 404 -
+167.248.133.37 - - [17/Jul/2023 01:35:18] "GET / HTTP/1.1" 404 -
+167.248.133.37 - - [17/Jul/2023 01:35:19] code 505, message Invalid HTTP version (2.0)
+167.248.133.37 - - [17/Jul/2023 01:35:19] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+45.227.254.55 - - [17/Jul/2023 03:21:26] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.227.254.55 - - [17/Jul/2023 03:21:26] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.199.96.173 - - [17/Jul/2023 04:27:06] code 400, message Bad request version ('À\x14À')
+198.199.96.173 - - [17/Jul/2023 04:27:06] " {  w+xã[´R.Ú?ÒÒ(p¾@UÚ¨¼rîÿ	h  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+198.235.24.214 - - [17/Jul/2023 05:24:09] "GET / HTTP/1.1" 404 -
+216.218.206.71 - - [17/Jul/2023 06:54:45] "GET / HTTP/1.1" 404 -
+216.218.206.107 - - [17/Jul/2023 06:55:23] "GET /favicon.ico HTTP/1.1" 404 -
+216.218.206.111 - - [17/Jul/2023 06:55:45] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+216.218.206.107 - - [17/Jul/2023 06:56:08] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+193.37.69.150 - - [17/Jul/2023 13:32:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+193.37.69.150 - - [17/Jul/2023 13:32:43] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+103.203.57.20 - - [17/Jul/2023 15:37:50] "GET / HTTP/1.1" 404 -
+2.57.170.71 - - [17/Jul/2023 17:41:58] code 400, message Bad request syntax ('ÿ\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00è\x03d\x00\x00\x00{ "EncryptType" : "MD5", "LoginType" : "DVRIP-Web", "PassWord" : "6QNMIQGe", "UserName" : "admin" }')
+2.57.170.71 - - [17/Jul/2023 17:41:58] "ÿ             èd   { "EncryptType" : "MD5", "LoginType" : "DVRIP-Web", "PassWord" : "6QNMIQGe", "UserName" : "admin" }" HTTPStatus.BAD_REQUEST -
+31.220.1.83 - - [17/Jul/2023 19:40:45] code 400, message Bad HTTP/0.9 request type ('Z¥\x01')
+31.220.1.83 - - [17/Jul/2023 19:40:45] "Z¥     " HTTPStatus.BAD_REQUEST -
+206.189.57.162 - - [17/Jul/2023 19:43:23] "GET /aaa9 HTTP/1.1" 404 -
+206.189.57.162 - - [17/Jul/2023 19:43:23] "GET /aab8 HTTP/1.1" 404 -
+206.189.57.162 - - [17/Jul/2023 19:43:23] "GET / HTTP/1.1" 404 -
+162.142.125.224 - - [17/Jul/2023 19:58:11] "GET / HTTP/1.1" 404 -
+162.142.125.224 - - [17/Jul/2023 19:58:11] "GET / HTTP/1.1" 404 -
+162.142.125.224 - - [17/Jul/2023 19:58:12] code 505, message Invalid HTTP version (2.0)
+162.142.125.224 - - [17/Jul/2023 19:58:12] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+107.170.231.20 - - [17/Jul/2023 21:25:28] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.231.20 - - [17/Jul/2023 21:25:28] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+198.235.24.93 - - [17/Jul/2023 22:10:36] "GET / HTTP/1.1" 404 -
+198.235.24.101 - - [17/Jul/2023 22:18:19] "GET / HTTP/1.1" 404 -
+205.210.31.212 - - [17/Jul/2023 23:05:22] "GET / HTTP/1.1" 404 -
+194.165.16.37 - - [17/Jul/2023 23:05:55] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.37 - - [17/Jul/2023 23:05:55] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.203 - - [17/Jul/2023 23:49:19] "GET / HTTP/1.1" 404 -
+198.235.24.254 - - [18/Jul/2023 00:08:54] "GET / HTTP/1.1" 404 -
+205.210.31.87 - - [18/Jul/2023 00:38:43] "GET / HTTP/1.1" 404 -
+198.235.24.247 - - [18/Jul/2023 01:08:34] "GET / HTTP/1.1" 404 -
+198.235.24.43 - - [18/Jul/2023 01:20:50] "GET / HTTP/1.1" 404 -
+205.210.31.203 - - [18/Jul/2023 01:32:06] "GET / HTTP/1.1" 404 -
+205.210.31.163 - - [18/Jul/2023 01:43:37] "GET / HTTP/1.1" 404 -
+205.210.31.39 - - [18/Jul/2023 01:48:04] "GET / HTTP/1.1" 404 -
+64.62.197.8 - - [18/Jul/2023 02:20:39] "GET / HTTP/1.1" 404 -
+64.62.197.4 - - [18/Jul/2023 02:21:02] "GET /favicon.ico HTTP/1.1" 404 -
+64.62.197.8 - - [18/Jul/2023 02:21:05] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+64.62.197.9 - - [18/Jul/2023 02:21:16] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+198.235.24.242 - - [18/Jul/2023 03:05:20] "GET / HTTP/1.1" 404 -
+198.235.24.78 - - [18/Jul/2023 04:31:46] "GET / HTTP/1.1" 404 -
+198.235.24.219 - - [18/Jul/2023 05:06:10] "GET / HTTP/1.1" 404 -
+205.210.31.107 - - [18/Jul/2023 05:40:03] "GET / HTTP/1.1" 404 -
+186.189.90.177 - - [18/Jul/2023 05:43:11] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+186.189.90.177 - - [18/Jul/2023 05:43:11] "    c                           " HTTPStatus.BAD_REQUEST -
+205.210.31.233 - - [18/Jul/2023 05:44:27] "GET / HTTP/1.1" 404 -
+167.94.138.52 - - [18/Jul/2023 06:14:31] "GET / HTTP/1.1" 404 -
+167.94.138.52 - - [18/Jul/2023 06:14:31] "GET / HTTP/1.1" 404 -
+167.94.138.52 - - [18/Jul/2023 06:14:32] code 505, message Invalid HTTP version (2.0)
+167.94.138.52 - - [18/Jul/2023 06:14:32] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+159.203.208.14 - - [18/Jul/2023 06:17:56] "GET / HTTP/1.1" 404 -
+198.235.24.51 - - [18/Jul/2023 06:20:16] "GET / HTTP/1.1" 404 -
+205.210.31.48 - - [18/Jul/2023 06:21:44] "GET / HTTP/1.1" 404 -
+80.66.75.74 - - [18/Jul/2023 06:47:14] code 400, message Bad request syntax ('\x01\x01æ')
+80.66.75.74 - - [18/Jul/2023 06:47:14] "æ" HTTPStatus.BAD_REQUEST -
+198.235.24.226 - - [18/Jul/2023 07:20:59] "GET / HTTP/1.1" 404 -
+205.210.31.239 - - [18/Jul/2023 07:29:00] "GET / HTTP/1.1" 404 -
+205.210.31.213 - - [18/Jul/2023 08:46:45] "GET / HTTP/1.1" 404 -
+198.235.24.213 - - [18/Jul/2023 09:12:59] "GET / HTTP/1.1" 404 -
+198.235.24.49 - - [18/Jul/2023 09:42:25] "GET / HTTP/1.1" 404 -
+205.210.31.235 - - [18/Jul/2023 09:58:40] "GET / HTTP/1.1" 404 -
+179.60.147.47 - - [18/Jul/2023 10:36:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+179.60.147.47 - - [18/Jul/2023 10:36:41] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+87.236.176.135 - - [18/Jul/2023 11:22:28] "GET / HTTP/1.1" 404 -
+205.210.31.40 - - [18/Jul/2023 11:50:20] "GET / HTTP/1.1" 404 -
+198.235.24.133 - - [18/Jul/2023 12:23:45] "GET / HTTP/1.1" 404 -
+198.199.116.29 - - [18/Jul/2023 12:43:48] "GET / HTTP/1.1" 404 -
+205.210.31.244 - - [18/Jul/2023 12:45:49] "GET / HTTP/1.1" 404 -
+198.235.24.132 - - [18/Jul/2023 13:19:19] "GET / HTTP/1.1" 404 -
+147.78.47.10 - - [18/Jul/2023 15:11:50] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+147.78.47.10 - - [18/Jul/2023 15:11:50] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.148 - - [18/Jul/2023 15:49:15] "GET / HTTP/1.1" 404 -
+14.163.109.25 - - [18/Jul/2023 16:26:37] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+14.163.109.25 - - [18/Jul/2023 16:26:37] "    c                           " HTTPStatus.BAD_REQUEST -
+179.60.147.47 - - [18/Jul/2023 16:35:49] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+179.60.147.47 - - [18/Jul/2023 16:35:49] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.235.24.221 - - [18/Jul/2023 16:42:15] "GET / HTTP/1.1" 404 -
+14.163.109.25 - - [18/Jul/2023 16:49:00] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+14.163.109.25 - - [18/Jul/2023 16:49:00] "    c                           " HTTPStatus.BAD_REQUEST -
+198.235.24.145 - - [18/Jul/2023 17:52:55] "GET / HTTP/1.1" 404 -
+81.183.79.212 - - [18/Jul/2023 19:24:27] "GET / HTTP/1.0" 404 -
+205.210.31.55 - - [18/Jul/2023 19:59:00] "GET / HTTP/1.1" 404 -
+205.210.31.90 - - [18/Jul/2023 20:03:45] "GET / HTTP/1.1" 404 -
+205.210.31.237 - - [18/Jul/2023 20:30:50] "GET / HTTP/1.1" 404 -
+198.235.24.249 - - [18/Jul/2023 20:41:39] "GET / HTTP/1.1" 404 -
+198.235.24.70 - - [18/Jul/2023 22:33:35] "GET / HTTP/1.1" 404 -
+205.210.31.81 - - [18/Jul/2023 22:38:47] "GET / HTTP/1.1" 404 -
+193.32.162.190 - - [18/Jul/2023 22:53:12] "GET /../../mnt/mtd/Config/Account1 HTTP/1.1" 404 -
+198.235.24.182 - - [18/Jul/2023 23:10:05] "GET / HTTP/1.1" 404 -
+193.32.162.190 - - [18/Jul/2023 23:19:06] "GET /../../mnt/mtd/Config/Account2 HTTP/1.1" 404 -
+14.163.109.25 - - [18/Jul/2023 23:22:15] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+14.163.109.25 - - [18/Jul/2023 23:22:15] "    c                           " HTTPStatus.BAD_REQUEST -
+198.235.24.18 - - [18/Jul/2023 23:24:05] "GET / HTTP/1.1" 404 -
+179.60.147.47 - - [18/Jul/2023 23:33:12] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+179.60.147.47 - - [18/Jul/2023 23:33:12] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+14.163.109.25 - - [18/Jul/2023 23:38:22] code 400, message Bad HTTP/0.9 request type ('\x00\x00\x00')
+14.163.109.25 - - [18/Jul/2023 23:38:22] "    c                           " HTTPStatus.BAD_REQUEST -
+198.235.24.246 - - [19/Jul/2023 00:07:10] "GET / HTTP/1.1" 404 -
+205.210.31.69 - - [19/Jul/2023 00:17:03] "GET / HTTP/1.1" 404 -
+198.235.24.82 - - [19/Jul/2023 02:04:06] "GET / HTTP/1.1" 404 -
+192.241.236.75 - - [19/Jul/2023 02:04:20] code 400, message Bad request version ('À\x14À')
+192.241.236.75 - - [19/Jul/2023 02:04:20] " {  wUN¢ÂófhXu`N¥p=æ´Êm°÷ô	Ñ=#  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+198.235.24.47 - - [19/Jul/2023 02:06:50] "GET / HTTP/1.1" 404 -
+198.235.24.95 - - [19/Jul/2023 03:14:45] "GET / HTTP/1.1" 404 -
+45.155.91.80 - - [19/Jul/2023 03:24:41] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x8b')
+45.155.91.80 - - [19/Jul/2023 03:24:41] "  ün^¼1}-jxÞVÊ%;ÝÉCÇ·«»Ô3  ¬À0À,À(À$ÀÀ" HTTPStatus.BAD_REQUEST -
+198.235.24.66 - - [19/Jul/2023 03:28:07] "GET / HTTP/1.1" 404 -
+205.210.31.246 - - [19/Jul/2023 03:39:05] "GET / HTTP/1.1" 404 -
+107.170.241.35 - - [19/Jul/2023 04:05:55] code 400, message Bad request syntax ('MGLNDD_75.119.147.215_8000')
+107.170.241.35 - - [19/Jul/2023 04:05:55] "MGLNDD_75.119.147.215_8000" HTTPStatus.BAD_REQUEST -
+205.210.31.164 - - [19/Jul/2023 04:26:30] "GET / HTTP/1.1" 404 -
+107.170.234.17 - - [19/Jul/2023 05:41:34] code 400, message Bad request version ('À\x14À')
+107.170.234.17 - - [19/Jul/2023 05:41:34] " {  wP³õØ²÷ùèí«"á{5ìÉaMwK±çá ¬  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+179.60.147.47 - - [19/Jul/2023 06:22:30] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+179.60.147.47 - - [19/Jul/2023 06:22:30] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+198.199.113.44 - - [19/Jul/2023 07:37:59] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03°Â£V\x02u\x1aÝ¥{\x83JöJ\x0c\x97n\x920T\x8a\\\x93\x06h\x1e±á\x84ÌiJ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\tÀ\x14À')
+198.199.113.44 - - [19/Jul/2023 07:37:59] " {  w°Â£VuÝ¥{JöJn0T\h±áÌiJ  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+167.248.133.38 - - [19/Jul/2023 08:46:46] "GET / HTTP/1.1" 404 -
+167.248.133.38 - - [19/Jul/2023 08:46:46] "GET / HTTP/1.1" 404 -
+167.248.133.38 - - [19/Jul/2023 08:46:47] code 505, message Invalid HTTP version (2.0)
+167.248.133.38 - - [19/Jul/2023 08:46:47] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+94.102.61.48 - - [19/Jul/2023 10:33:28] "GET / HTTP/1.1" 404 -
+65.49.1.71 - - [19/Jul/2023 11:55:19] "GET / HTTP/1.1" 404 -
+65.49.1.69 - - [19/Jul/2023 11:55:47] "GET /favicon.ico HTTP/1.1" 404 -
+65.49.1.74 - - [19/Jul/2023 11:55:51] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+65.49.1.73 - - [19/Jul/2023 11:55:54] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+45.147.250.208 - - [19/Jul/2023 12:10:28] code 400, message Bad request version ('À\x14À')
+45.147.250.208 - - [19/Jul/2023 12:10:28] " u  qRa»×3IoÒwxUðT&d¯A"ì\öªe®  À/À+ÀÀÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+179.60.147.47 - - [19/Jul/2023 13:06:30] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+179.60.147.47 - - [19/Jul/2023 13:06:30] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+45.227.254.8 - - [19/Jul/2023 16:23:32] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.227.254.8 - - [19/Jul/2023 16:23:32] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+71.6.134.235 - - [19/Jul/2023 19:44:32] "GET / HTTP/1.1" 404 -
+71.6.134.235 - - [19/Jul/2023 20:00:01] code 400, message Bad request syntax ("\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x86ófÿxÂË\x01[\x0e¨'CçüvlÝÇð\x13ý/\x05++º\x94\x16µ\x9e\x81 \x93\x82¯îå\x00\x80^þX\x8b¦¢¨8íâ¾Û\x19k\x86,~da\t\x12C°\x1c\x95\x00&Ì¨Ì©À/À0À+À,À\x13À\tÀ\x14À")
+71.6.134.235 - - [19/Jul/2023 20:00:01] " î  êófÿxÂË[¨'CçüvlÝÇðý/++ºµ ¯îå ^þX¦¢¨8íâ¾Ûk,~da	C° &Ì¨Ì©À/À0À+À,ÀÀ	ÀÀ" HTTPStatus.BAD_REQUEST -
+31.220.1.83 - - [19/Jul/2023 22:42:46] code 400, message Bad HTTP/0.9 request type ('Z¥\x01')
+31.220.1.83 - - [19/Jul/2023 22:42:46] "Z¥     " HTTPStatus.BAD_REQUEST -
+45.95.146.48 - - [20/Jul/2023 01:17:08] "CONNECT google.com:443 HTTP/1.1" 404 -
+167.94.138.49 - - [20/Jul/2023 02:44:41] "GET / HTTP/1.1" 404 -
+167.94.138.49 - - [20/Jul/2023 02:44:41] "GET / HTTP/1.1" 404 -
+167.94.138.49 - - [20/Jul/2023 02:44:42] code 505, message Invalid HTTP version (2.0)
+167.94.138.49 - - [20/Jul/2023 02:44:42] "PRI * HTTP/2.0" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+65.49.1.117 - - [20/Jul/2023 06:54:41] "GET / HTTP/1.1" 404 -
+65.49.1.117 - - [20/Jul/2023 06:54:58] "GET /favicon.ico HTTP/1.1" 404 -
+65.49.1.117 - - [20/Jul/2023 06:55:02] "GET http://api.ipify.org/?format=json HTTP/1.1" 404 -
+65.49.1.118 - - [20/Jul/2023 06:55:05] "CONNECT www.shadowserver.org:443 HTTP/1.1" 404 -
+43.163.241.244 - - [20/Jul/2023 07:07:04] "GET / HTTP/1.1" 404 -
+205.210.31.96 - - [20/Jul/2023 07:57:02] "GET / HTTP/1.1" 404 -
+174.137.51.129 - - [20/Jul/2023 08:18:10] "GET / HTTP/1.0" 404 -
+174.137.51.129 - - [20/Jul/2023 08:18:11] "GET / HTTP/1.1" 404 -
+174.137.51.129 - - [20/Jul/2023 08:18:11] "GET /favicon.ico HTTP/1.1" 404 -
