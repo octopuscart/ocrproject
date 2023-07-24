@@ -480,59 +480,21 @@ def extract_date(extracted_text):
                 extracted_date = match.group(1)
                 break
 
-    # Convert date format to "dd/mm/yyyy"
+   # Convert date format to "dd/mm/yyyy"
     if extracted_date:
-        try:
-            date_obj = datetime.strptime(extracted_date, '%d-%m-%y')
-            year = date_obj.strftime('%Y')
-            extracted_date = date_obj.strftime('%d/%m/') + year
-        except ValueError:
+        date_formats = [
+            '%d-%m-%y', '%d-%m-%Y', '%d-%b-%y', '%d/%m/%y', '%d/%m/%Y', '%d-%b-%Y', '%d-%m-%y','%m-%d-%y',
+            '%d %b %Y', '%d.%m.%Y', '%d %B %Y', '%d/%m/%y'
+        ]
+        
+        for date_format in date_formats:
             try:
-                date_obj = datetime.strptime(extracted_date, '%d-%b-%y')
+                date_obj = datetime.strptime(extracted_date, date_format)
                 year = date_obj.strftime('%Y')
                 extracted_date = date_obj.strftime('%d/%m/') + year
+                break
             except ValueError:
-                try:
-                    date_obj = datetime.strptime(extracted_date, '%m/%d/%y')
-                    year = date_obj.strftime('%Y')
-                    extracted_date = date_obj.strftime('%d/%m/') + year
-                except ValueError:
-                    try:
-                        date_obj = datetime.strptime(extracted_date, '%d-%m-%y')
-                        year = date_obj.strftime('%Y')
-                        extracted_date = date_obj.strftime('%d/%m/') + year
-                    except ValueError:
-                        try:
-                            date_obj = datetime.strptime(extracted_date, '%m-%d-%y')
-                            year = date_obj.strftime('%Y')
-                            extracted_date = date_obj.strftime('%d/%m/') + year
-                        except ValueError:
-                            try:
-                                date_obj = datetime.strptime(extracted_date, '%d-%b-%Y')
-                                year = date_obj.strftime('%Y')
-                                extracted_date = date_obj.strftime('%d/%m/') + year
-                            except ValueError:
-                                try:
-                                    date_obj = datetime.strptime(extracted_date, '%d %b %Y')
-                                    year = date_obj.strftime('%Y')
-                                    extracted_date = date_obj.strftime('%d/%m/') + year
-                                except ValueError:
-                                    try:
-                                        date_obj = datetime.strptime(extracted_date, '%d.%m.%Y')
-                                        year = date_obj.strftime('%Y')
-                                        extracted_date = date_obj.strftime('%d/%m/') + year
-                                    except ValueError:
-                                        try:
-                                            date_obj = datetime.strptime(extracted_date, '%d %B %Y')
-                                            year = date_obj.strftime('%Y')
-                                            extracted_date = date_obj.strftime('%d/%m/') + year
-                                        except ValueError:
-                                            try:
-                                                date_obj = datetime.strptime(extracted_date, '%d/%m/%y')
-                                                year = date_obj.strftime('%Y')
-                                                extracted_date = date_obj.strftime('%d/%m/') + year
-                                            except ValueError:
-                                                pass  # Handle other date formats here
+                pass  # Handle other date formats here
 
     return extracted_date
  
