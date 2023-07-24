@@ -75,7 +75,47 @@ def upload_file():
     # if the request method is GET, return the upload form
     return render_template("index.html")
 
+
+def de_skew(image):
+    # Convert PIL Image object to NumPy array
+    img_array = convert_to_numpy(image)
+
+    # Convert image to grayscale
+    gray = convert_to_grayscale(img_array)
+
+    # Apply thresholding
+    thresh = apply_thresholding(gray)
+
+    # Get the angle of rotation needed to de-skew the image using Hough Line Transform
+    lines = cv2.HoughLinesP(thresh, rho=1, theta=np.pi/180, threshold=100, minLineLength=100, maxLineGap=5)
+
+    if lines is not None:
+        angles = []
+        for line in lines:
+            x1, y1, x2, y2 = line[0]
+            angle = np.arctan2(y2 - y1, x2 - x1) * 180 / np.pi
+            angles.append(angle)
+
+        # Get the median angle to reduce the influence of outlier lines
+        median_angle = np.median(angles)
+
+        # Rotate the image to de-skew
+        (h, w) = img_array.shape[:2]
+        center = (w // 2, h // 2)
+        M = cv2.getRotationMatrix2D(center, median_angle, 1.0)
+        rotated = cv2.warpAffine(img_array, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
+
+        return rotated
+    else:
+        # If no lines are detected, return the original image
+        return img_array
+    
+
 def process_image(image):
+    
+    # De-skew the image
+    image = de_skew(image)
+    
     # convert PIL Image object to NumPy array
     img_array = convert_to_numpy(image)
     
@@ -260,18 +300,35 @@ def perform_text_detection(thresh, img_array):
                     r"\d{2}\s+[A-Z]{5}\d{4}[A-Z]{1}\d{1}[Z]{1}[0-9A-Z]{1}"
                 ]
                 
-                date_pattern = r'\d[1-2][0-9][0-9][0-9][/]\d{1,2}[/]\d{1,2}|' \
-                               r'\d[1-2][0-9][0-9][0-9][-]\d{1,2}[-]\d{1,2}|' \
-                               r'[a-zA-Z]{3}[.-]\d[0-3][0-3][.-]\d[1-2][0-9][0-9][0-9]|' \
-                               r'[a-zA-Z]{3}\s\d{1,2}\s\d[1-4]|' \
-                               r'\d[0-3][0-3]\s[a-zA-Z]{3}\s\d[1-4]|' \
-                               r'\d[1-2][0-9][0-9][0-9][.-][a-zA-Z]{3}[.-]\d{2}|' \
-                               r'\d{1,2}[/-][a-zA-Z]{3}[/-]\d{2,4}|' \
-                               r'\d{1,2}[/]\d{1,2}[/]\d[1-4][0-9][0-9][0-9]|' \
-                               r'\d{1,2}[-]\d{1,2}[-]\d[1-4][0-9][0-9][0-9]|' \
-                               r'\d[1-4][,-]\s?[a-zA-Z]{3}[,-]\s?\d{1,2}|' \
-                               r'\d{1,2}[/]\d{1,2}[/]\d{2,4}|' \
-                               r'\d{1,2}[-]\d{1,2}[-]\d{2,4}'
+                date_pattern =  (
+                        r'\d{1,2}\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d{2,4}|'
+                        r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{1,2}\s\d[1-4]|'
+                        r'\d[0-3][0-3]\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d[1-4]|'
+                        r'\d{1,2}\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}|'
+                        r'\d{1,2}[/-](?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[/-]\d{2,4}|'
+                        r'\d{1,2}\s(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s\d{4}|'
+                        r'\d{1,2}[/]\d{1,2}[/]\d{2,4}|'
+                        r'\d{1,2}[-]\d{1,2}[-]\d{2,4}|'
+                        r'\d[1-2][0-9][0-9][0-9][/]\d{1,2}[/]\d{1,2}|'
+                        r'\d[1-2][0-9][0-9][0-9][-]\d{1,2}[-]\d{1,2}|'
+                        r'\d{4}-\d{2}-\d{2}|'
+                        r'\d{1,2}[/]\d{1,2}[/]\d[1-4][0-9][0-9][0-9]|'
+                        r'\d{1,2}[-]\d{1,2}[-]\d[1-4][0-9][0-9][0-9]|'
+                        r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[-]\d[0-3][0-3][-]\d[1-2][0-9][0-9][0-9]|'
+                        r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[.]\d[0-3][0-3][.]\d[1-2][0-9][0-9][0-9]|'
+                        r'\d{1,2}-(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)-\d[1-2]|'
+                        r'(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d{1,2}\s\d[1-4]|'
+                        r'\d[0-3][0-3]\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s\d[1-4]|'
+                        r'\d[1-2][0-9][0-9][0-9][.-](?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[.-]\d{2}|'
+                        r'\d{1,2}[/-](?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)[/-]\d{2,4}|'
+                        r'\d[1-4][,-]\s?(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[,-]\s?\d{1,2}|'
+                        r'\d{1,2}\s-\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s-\s\d{4}|'
+                        r'\d{1,2}\s/\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s/\s\d{4}|'
+                        r'\d{1,2}\s-\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s-\s\d{4}|'
+                        r'\d{1,2}\s/\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s/\s\d{4}|'
+                        r'\d{1,2}[.]\d{1,2}[.]\d{4}|'
+                        r'\d{1,2}[.]\d{1,2}[.]\d{2,4}'
+                                )
                 
                 amount_pattern = r"[\d,]+\.\d{2}"
 
@@ -508,9 +565,9 @@ def extract_date(extracted_text):
        
 def extract_gst_number(extracted_text):
     labels = [
-        'Gstin No.:', 'GSTIN Number:', 'GSTIN/UIN:',
-        'GSTIN :', 'GSTIN', 'Customer GST No ', 'GSTIN Number;',
-        'GSTN:', 'GSTIN No, : ', 'GSTIN No-'
+        "Gstin No.:", "GSTIN Number:", "GSTIN/UIN:",
+        "GSTIN :", "GSTIN", "Customer GST No ", "GSTIN Number;",
+        "GSTN:", "GSTIN No, : ", "GSTIN No-"
     ]
 
     gst_patterns = [
@@ -544,15 +601,16 @@ def extract_gst_number(extracted_text):
 
 def extract_max_amount(extracted_text):
     amount_patterns = [
-        r'Total Fare\s*([\d,.]+)',
-        r'\*Total Fare \(All Passenger\):\s*([\d,.]+)',
-        r'Total Amount:\s*([\d,.]+)',
-        r'Amount Due:\s*([\d,.]+)',
-        r'Grand Total:\s*([\d,.]+)',
+        r"Total Fare\s*([\d,.]+)",
+        r"\*Total Fare \(All Passenger\):\s*([\d,.]+)",
+        r"Total Amount:\s*([\d,.]+)",
+        r"Amount Due:\s*([\d,.]+)",
+        r"Grand Total:\s*([\d,.]+)",
         r"[\d,]+\.\d{2}", 
         r"Total Payable \(INR\) [\d,]+\.\d{2}",
-        r'Total Value \(in figure\)\s*([\d,.]+)',
-        r'Grand\s*Total\s*\(\w+\)\s*:\s*([\d,.]+)'
+        r"Total Value \(in figure\)\s*([\d,.]+)",
+        r"Grand\s*Total\s*\(\w+\)\s*:\s*([\d,.]+)"
+
         # Add more patterns as needed
     ]
     amounts = []
@@ -574,8 +632,12 @@ def extract_max_amount(extracted_text):
 def extract_cgst_amount(extracted_text):
     # Approach 1: Extract CGST amount using alternative patterns
     cgst_patterns = [
+        r"CGST @ (\d+(?:\.\d+)?)",
+        r"CGST\s*:\s*(\d+(?:\.\d+)?)",
+        r"CGST\s*(\d+(?:\.\d+)?)",
         r"\[.*\|\s*([\d.,]+)\]",
-        r"CGST\(\w+%\)\s+(\d+)"
+        r"CGST\(\w+%\)\s+(\d+)",
+        r"Central GST\s*(\d+(?:\.\d+)?)"
     ]
     for pattern in cgst_patterns:
         matches = re.findall(pattern, extracted_text)
@@ -587,7 +649,7 @@ def extract_cgst_amount(extracted_text):
     # Approach 2: Extract CGST amount using index and regular expression
     cgst_index = extracted_text.find("CGST")
     if cgst_index != -1:
-        cgst_pattern = r'\d[\d,]+\.\d{2}'
+        cgst_pattern = r"\d[\d,]+\.\d{2}"
         cgst_matches = re.findall(cgst_pattern, extracted_text[cgst_index:])
         if cgst_matches:
             cgst_amount_index_regex = float(cgst_matches[0].replace(',', ''))
@@ -598,8 +660,12 @@ def extract_cgst_amount(extracted_text):
 def extract_sgst_amount(extracted_text):
     # Approach 1: Extract CGST amount using alternative patterns
     sgst_patterns = [
+        r"SGST @ (\d+(?:\.\d+)?)",
+        r"SGST\s*:\s*(\d+(?:\.\d+)?)",
+        r"SGST\s*(\d+(?:\.\d+)?)",
         r"\[.*\|\s*([\d.,]+)\]",
-        r"SGST\(\w+%\)\s+(\d+)"
+        r"SGST\(\w+%\)\s+(\d+)",
+        r"State GST\s*(\d+(?:\.\d+)?)"
     ]
     for pattern in sgst_patterns:
         matches = re.findall(pattern, extracted_text)
@@ -611,7 +677,7 @@ def extract_sgst_amount(extracted_text):
     # Approach 2: Extract CGST amount using index and regular expression
     sgst_index = extracted_text.find("SGST")
     if sgst_index != -1:
-        sgst_pattern = r'\d[\d,]+\.\d{2}'
+        sgst_pattern = r"\d[\d,]+\.\d{2}"
         sgst_matches = re.findall(sgst_pattern, extracted_text[sgst_index:])
         if sgst_matches:
             sgst_amount_index_regex = float(sgst_matches[0].replace(',', ''))
