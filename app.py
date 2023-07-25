@@ -438,8 +438,7 @@ def extract_date(extracted_text):
          r'\d{1,2}\s/\s(?:[Jj]an|[Ff]eb|[Mm]ar|[Aa]pr|[Mm]ay|[Jj]un|[Jj]ul|[Aa]ug|[Ss]ep|[Oo]ct|[Nn]ov|[Dd]ec)\s/\s\d{4}',  # DD / Mon / YYYY
          r'\d{1,2}\s-\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s-\s\d{4}',  # DD - Mon - YYYY
          r'\d{1,2}\s/\s(?:January|February|March|April|May|June|July|August|September|October|November|December)\s/\s\d{4}',  # DD / Mon / YYYY
-         r'\d{1,2}[.]\d{1,2}[.]\d{4}'  # DD.MM.YYYY
-         r'\d{1,2}[.]\d{1,2}[.]\d{2,4}'  # DD.MM.YY
+         r'\d{1,2}[.]\d{1,2}[.]\d{4}'  # DD.MM.YYYYs
          ]
     
     # Define the labels and their corresponding preceding patterns
@@ -510,7 +509,7 @@ def extract_date(extracted_text):
     if extracted_date:
         date_formats = [
             '%d-%m-%y', '%d-%m-%Y', '%d-%b-%y', '%d/%m/%y', '%d/%m/%Y', '%d-%b-%Y', '%d-%m-%y','%m-%d-%y',
-            '%d %b %Y', '%d.%m.%Y', '%d %B %Y', '%d/%m/%y'
+            '%d %b %Y', '%d.%m.%Y', '%d.%m.%y', '%d %B %Y', '%d/%m/%y'
         ]
         
         for date_format in date_formats:
