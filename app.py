@@ -19,6 +19,9 @@ import PyPDF2
 from datetime import date
 from datetime import datetime
 from collections import OrderedDict
+import math
+import spacy
+from spacy import displacy
 
 
 app = Flask(__name__)
@@ -358,6 +361,55 @@ def perform_text_detection(thresh, img_array):
     return img_copy
 
 
+# extracting Supplier names using spacy library
+def extract_supplier_name(extracted_text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(extracted_text)
+
+    supplier_name = ""
+
+    # Company/Organization Names using spaCy
+    for ent in doc.ents:
+        if ent.label_ == "ORG":
+            supplier_name = ent.text.strip()
+            break
+    
+    if not supplier_name:
+        # Check for supplier names using the provided regex patterns
+        supplier_name_patterns = [
+            # Buyer Name Pattern
+            r"[A-Za-z\s.&]+(?:(?: Solution| Pvt Ltd| Pvt\. Ltd\.| Limited|(?=\n))"
+            # Organization Names
+            r'\b(?:[A-Z][A-Za-z.&]+(?:\s[A-Z][A-Za-z.&]+)*)\b',
+            r'\b(?:[A-Z][A-Za-z.&]+(?:\s[A-Z][A-Za-z.&]+)*\s(?:Solution|Limited|Ltd\.|Private Limited|Pvt\. Ltd\.|Corporation|Corp\.|Inc\.|Corp\.))\b',
+            # Business Names
+            r"\b(?:[A-Za-z'.&]+)\b",
+            # Store/Shop Names
+            r"\b(?:[A-Za-z'.&]+\s)+?(?:ENTERPRISES|Shop|Store|Market|Outlet|Mart|Supermarket)\b",
+            r"\b(?:[A-Za-z'.&]+\s)*?(?:Bakery|Cafe|Restaurant|Hardware)\b",
+            # Supplier Labels
+            r"(Supplier|Vendor|Seller):\s*(.+)",
+            r"(Business|Company|Provider):\s*(.+)",
+            # Specific Keywords related to supplier names
+            r"\b(?:Foods|Produce|Distributors|Wholesale)\b",
+            r"\b(?:Electronics|Hardware|Apparel|Pharma|Automotive)\b",
+            # Additional pattern for Supplier Name without specific labels
+            r"\b(?:[A-Z][\w\s.&]+)\b",
+             # Supplier name with "Enterprises" (added this pattern)
+            r"\b(?:[A-Z][A-Za-z.&]+\s(?:Enterprises|ENTERPRISES))\b"
+            # Add more supplier name patterns here as needed
+        ]
+
+
+        for pattern in supplier_name_patterns:
+            supplier_name_match = re.search(pattern, extracted_text)
+            if supplier_name_match:
+                supplier_name = supplier_name_match.group(0).strip()
+                break
+
+    return supplier_name
+
+
 #  Extracting Invoice Number
 def extract_invoice_number(invoice_text):
      # Preprocess the text
@@ -638,12 +690,13 @@ def extract_igst_amount(text):
     return None
 
 
-def extract_gst_total(extracted_text):
+def extract_gst_total_amount(extracted_text):
     # Define patterns for GST total extraction
     patterns = [
         r"(?i)(?:GST|tax)\s*total[:\s]*([0-9.,]+)",
         r"(?i)total.*?(?:GST|tax)[:\s]*([0-9.,]+)",
-        r"(?i)GST\s*Total\s*([0-9.,]+)"
+        r"(?i)GST\s*Total\s*([0-9.,]+)",
+        r"(?i)Total\s+Tax\s+Amount\s+([0-9.,]+)"
     ]
     
     # Search for patterns in the extracted text
@@ -733,6 +786,14 @@ def extract_text(img):
         
     data = {}
     
+    # Extracting the Supplier Name using the extract_supplier_name function
+    supplier_name = extract_supplier_name(extracted_text)
+    if supplier_name:
+        print(f"Extracted Supplier Name: {supplier_name}")
+        data['Supplier Name'] = supplier_name
+    else:
+        print("Supplier Name not found in text.")
+    
     invoice_no = extract_invoice_number(extracted_text)
     if invoice_no:
         print(f"Extracted Invoice Number: {invoice_no}")
@@ -784,12 +845,12 @@ def extract_text(img):
     else:
         print("IGST amount not found in text.")
         
-    gst_total = extract_gst_total(extracted_text)
+    gst_total = extract_gst_total_amount(extracted_text)
     if gst_total:
-        print(f"Extracted GST Total: {gst_total}")
-        data['GST Total'] = gst_total
+        print(f"Extracted Total GST TAX Amount: {gst_total}")
+        data['Total GST TAX Amount'] = gst_total
     else:
-        print("GST Total not found in text.")        
+        print("Total GST TAX Amount not found in text.")        
 
     sgst = extract_sgst_percentage(extracted_text)
     if sgst:
