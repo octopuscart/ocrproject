@@ -796,10 +796,10 @@ def extract_text(img):
     
     invoice_no = extract_invoice_number(extracted_text)
     if invoice_no:
-        print(f"Extracted Invoice Number: {invoice_no}")
-        data['Invoice Number'] = invoice_no
+        print(f"Extracted InvoiceNumber: {invoice_no}")
+        data['InvoiceNumber'] = invoice_no
     else:
-        print("Invoice Number not found in text.")  
+        print("InvoiceNumber not found in text.")  
 
     date = extract_date(extracted_text)
     if date:
@@ -810,33 +810,47 @@ def extract_text(img):
     
     gst_numbers = extract_gst_number(extracted_text)
     if gst_numbers:
-        print(f"Extracted GST Numbers: {gst_numbers}")
+        print(f"Extracted GSTNumbers: {gst_numbers}")
         for i, gst_number in enumerate(gst_numbers):
-            label = f"GST Number {i+1}"
+            label = f"GSTNumber {i+1}"
             data[label] = gst_number
     else:
-        print("GST Numbers not found in text.")  
+        print("GSTNumbers not found in text.")  
         
     max_amount = extract_max_amount(extracted_text)
     if max_amount:
         print(f"Extracted maximum amount: {max_amount}")
-        data['Total'] = max_amount
+        data["Total"] = max_amount
     else:
         print("Total amount not found in text.")
         
     cgst_amount = extract_cgst_amount(extracted_text)
     if cgst_amount:
-        print(f"Extracted CGST amount: {cgst_amount}")
-        data['CGST amount'] = cgst_amount
+        print(f"Extracted CGSTAmount: {cgst_amount}")
+        data['CGSTAmount'] = cgst_amount
     else:
-        print("CGST amount not found in text.")
+        print("CGSTAmount not found in text.")
+        
+    cgst = extract_cgst_percentage(extracted_text)
+    if cgst:
+        print(f"Extracted CGSTPer: {cgst}")
+        data['CGSTPer'] = cgst
+    else:
+        print("CGSTPer not found in text.")      
         
     sgst_amount = extract_sgst_amount(extracted_text)
     if sgst_amount:
-        print(f"Extracted SGST amount: {sgst_amount}")
-        data['SGST amount'] = sgst_amount
+        print(f"Extracted SGSTAmount: {sgst_amount}")
+        data['SGSTAmount'] = sgst_amount
     else:
-        print("SGST amount not found in text.")    
+        print("SGSTAmount not found in text.")   
+        
+    sgst = extract_sgst_percentage(extracted_text)
+    if sgst:
+        print(f"Extracted SGSTPer: {sgst}")
+        data['SGSTPer'] = sgst
+    else:
+        print("SGSTPer not found in text.")         
         
     igst_amount = extract_igst_amount(extracted_text)
     if igst_amount:
@@ -851,20 +865,6 @@ def extract_text(img):
         data['Total GST TAX Amount'] = gst_total
     else:
         print("Total GST TAX Amount not found in text.")        
-
-    sgst = extract_sgst_percentage(extracted_text)
-    if sgst:
-        print(f"Extracted SGST Percentage: {sgst}")
-        data['SGST Percentage'] = sgst
-    else:
-        print("SGST Percentage not found in text.")    
-    
-    cgst = extract_cgst_percentage(extracted_text)
-    if cgst:
-        print(f"Extracted CGST Percentage: {cgst}")
-        data['CGST Percentage'] = cgst
-    else:
-        print("CGST Percentage not found in text.")  
 
     return data
 
