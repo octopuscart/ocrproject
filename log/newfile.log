@@ -1,0 +1,6 @@
+2023-08-02 11:40:21,243  * Debugger is active!
+2023-08-02 11:40:21,253  * Debugger PIN: 621-005-059
+2023-08-02 11:42:58,216 127.0.0.1 - - [02/Aug/2023 11:42:58] "GET /upload/ocr HTTP/1.1" 200 -
+2023-08-02 11:43:00,081 127.0.0.1 - - [02/Aug/2023 11:43:00] "[33mGET /favicon.ico HTTP/1.1[0m" 4042023-08-02 11:52:40,339  * Restarting with stat
+/2023 11:44:16] "POST /upload/ocr HTTP/1.1" 200 -
+2023-08-02 11:52:39,165  * Detected change in 'c:\\Users\\owner\\OCR_READER\\app.py', reloading
