@@ -22,8 +22,15 @@ from collections import OrderedDict
 import math
 import spacy
 from spacy import displacy
+from spacy.pipeline import EntityRuler
+import os
+from tqdm import tqdm
+from spacy.tokens import DocBin
+from spacy.training.example import Example
 
 
+# Load the trained spaCy model
+nlp = spacy.load("output/model-best")
 app = Flask(__name__)
 
 @app.route('/ocrapi', methods=['POST', 'GET'])
@@ -389,7 +396,6 @@ def perform_text_detection(thresh, img_array):
 
 # extracting Supplier names using spacy library
 def extract_supplier_name(extracted_text):
-    nlp = spacy.load("en_core_web_sm")
     doc = nlp(extracted_text)
 
     supplier_name = ""
@@ -418,12 +424,8 @@ def extract_supplier_name(extracted_text):
             r"(Business|Company|Provider):\s*(.+)",
             # Specific Keywords related to supplier names
             r"\b(?:Foods|Produce|Distributors|Wholesale)\b",
-            r"\b(?:Electronics|Hardware|Apparel|Pharma|Automotive)\b",
-            # Additional pattern for Supplier Name without specific labels
-            r"\b(?:[A-Z][\w\s.&]+)\b",
-             # Supplier name with "Enterprises" (added this pattern)
-            r"\b(?:[A-Z][A-Za-z.&]+\s(?:Enterprises|ENTERPRISES))\b"
-            # Add more supplier name patterns here as needed
+            r"\b(?:Electronics|Hardware|Apparel|Pharma|Automotive)\b"
+    
         ]
 
 
